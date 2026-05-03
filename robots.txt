@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://enzoperesafonso.github.io/sitemap.xml
