@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Seismology 3D Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <!-- 3D Canvas Background -->
+        <canvas id="star-canvas"></canvas>
+
+        <!-- UI Dashboard -->
+        <div id="ui-overlay">
+            <header>
+                <h1>Stellar Seismology</h1>
+                <p class="subtitle">Exploring Stellar Oscillations (Spherical Harmonics)</p>
+            </header>
+
+            <div class="control-group">
+                <label>Stellar Class Preset:</label>
+                <div class="toggle-group presets">
+                    <button id="preset-sun" class="active">Sun</button>
+                    <button id="preset-giant">Red Giant</button>
+                    <button id="preset-dwarf">White Dwarf</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Wave Type:</label>
+                <div class="toggle-group">
+                    <button id="p-mode-btn">p-mode (Pressure)</button>
+                    <button id="g-mode-btn">g-mode (Gravity)</button>
+                </div>
+            </div>
+
+            <div class="control-group slider-group">
+                <div class="slider-header">
+                    <label for="l-slider">Degree (l):</label>
+                    <span id="l-value" class="value-badge">2</span>
+                </div>
+                <input type="range" id="l-slider" min="0" max="6" step="1" value="2">
+                <p class="control-desc">Total number of nodal lines on the surface.</p>
+            </div>
+
+            <div class="control-group slider-group">
+                <div class="slider-header">
+                    <label for="m-slider">Order (m):</label>
+                    <span id="m-value" class="value-badge">0</span>
+                </div>
+                <input type="range" id="m-slider" min="-2" max="2" step="1" value="0">
+                <p class="control-desc">Number of longitudinal nodal lines.</p>
+            </div>
+
+            <div class="control-group slider-group">
+                <div class="slider-header">
+                    <label for="amplitude-slider">Amplitude:</label>
+                    <span id="amplitude-value" class="value-badge">0.1</span>
+                </div>
+                <input type="range" id="amplitude-slider" min="0" max="0.5" step="0.01" value="0.1">
+            </div>
+
+            <div class="control-group slider-group">
+                <div class="slider-header">
+                    <label for="speed-slider">Time Step (Speed):</label>
+                    <span id="speed-value" class="value-badge">1.0</span>
+                </div>
+                <input type="range" id="speed-slider" min="0" max="5" step="0.1" value="1.0">
+            </div>
+
+            <div class="control-group checkboxes">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="node-toggle" checked>
+                    <span class="custom-checkbox"></span>
+                    Show Nodal Lines
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="glow-toggle">
+                    <span class="custom-checkbox"></span>
+                    Brightness Variations
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="realistic-toggle">
+                    <span class="custom-checkbox"></span>
+                    Realistic Photosphere
+                </label>
+            </div>
+
+            <div class="control-group">
+                <button id="audio-btn" class="secondary-btn">Enable Sonification (Sound)</button>
+            </div>
+
+            <!-- Enhanced Lightcurve Panel -->
+            <div id="lightcurve-container">
+                <div class="lc-header">
+                    <span class="lc-title">Integrated Lightcurve (ΔF/F)</span>
+                    <span class="lc-status">● LIVE</span>
+                </div>
+                <div class="lc-plot-area">
+                    <canvas id="lightcurve-canvas"></canvas>
+                </div>
+            </div>
+
+            <div id="interaction-hint">
+                <p>Drag to rotate &bull; Scroll to zoom</p>
+            </div>
+
+            <div id="footer">
+                <p>Developed by Enzo Peres Afonso </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js from CDN -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+          }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
