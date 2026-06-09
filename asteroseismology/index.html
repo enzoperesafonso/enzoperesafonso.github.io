@@ -3,111 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Seismology 3D Visualizer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Asteroseismology Simulator</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+
     <div id="container">
         <!-- 3D Canvas Background -->
         <canvas id="star-canvas"></canvas>
 
-        <!-- UI Dashboard -->
+        <div class="top-left-controls">
+            <button id="ui-toggle-btn" class="glass-btn">Hide UI</button>
+            <button id="about-btn" class="glass-btn">About</button>
+        </div>
         <div id="ui-overlay">
             <header>
-                <h1>Stellar Seismology</h1>
-                <p class="subtitle">Exploring Stellar Oscillations (Spherical Harmonics)</p>
+                <h1>Asteroseismology Simulator</h1>
+                <p class="subtitle">Visualise Stellar Harmonics</p>
             </header>
+            <details open>
+                <summary>Stellar Properties</summary>
+                <div class="details-content">
+                    <div class="control-group">
+                        <label>Star Selection Mode:</label>
+                        <select id="star-mode-dropdown" class="dropdown">
+                            <option value="paper">Main Sequence</option>
+                            <option value="custom">Custom (Teff & log g)</option>
+                        </select>
+                        <p class="control-desc" style="margin-top: 10px;">Simulation colours based on Digital Color Codes of Stars (Harre and Heller 2021) check out the paper <a href="https://arxiv.org/abs/2101.06254" target="_blank" style="color: var(--accent-color);">here</a>.</p>
+                    </div>
 
-            <div class="control-group">
-                <label>Stellar Class Preset:</label>
-                <div class="toggle-group presets">
-                    <button id="preset-sun" class="active">Sun</button>
-                    <button id="preset-giant">Red Giant</button>
-                    <button id="preset-dwarf">White Dwarf</button>
+                    <div id="paper-mode-controls">
+                        <div class="control-group">
+                            <label for="spectral-type-dropdown">Spectral Type:</label>
+                            <select id="spectral-type-dropdown" class="dropdown" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #333; background: #111; color: #fff; font-size: 14px; margin-top: 5px;">
+                                <!-- Populated via JS -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="custom-mode-controls" style="display: none;">
+                        <div class="control-group slider-group">
+                            <div class="slider-header">
+                                <label for="teff-slider">Temperature (Teff):</label>
+                                <span class="slider-value"><span id="teff-value">5800</span> K</span>
+                            </div>
+                            <input type="range" id="teff-slider" min="2000" max="40000" step="100" value="5800">
+                        </div>
+                        <div class="control-group slider-group">
+                            <div class="slider-header">
+                                <label for="logg-slider">Surface Gravity (log g):</label>
+                                <span class="slider-value"><span id="logg-value">4.4</span></span>
+                            </div>
+                            <input type="range" id="logg-slider" min="0.0" max="8.0" step="0.1" value="4.4">
+                        </div>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="rotation-slider">Rotation Speed:</label>
+                            <span id="rotation-value" class="value-badge">0.10</span>
+                        </div>
+                        <input type="range" id="rotation-slider" min="0" max="1.0" step="0.01" value="0.1">
+                    </div>
+
+                    
                 </div>
-            </div>
+            </details>
 
-            <div class="control-group">
-                <label>Wave Type:</label>
-                <div class="toggle-group">
-                    <button id="p-mode-btn">p-mode (Pressure)</button>
-                    <button id="g-mode-btn">g-mode (Gravity)</button>
+            <details>
+                <summary>Stellar Oscillations</summary>
+                <div class="details-content">
+                    <div class="control-group checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="oscillate-toggle" checked>
+                            <span class="custom-checkbox"></span>
+                            Enable Oscillations
+                        </label>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="freq-slider">Wave Frequency:</label>
+                            <span id="freq-value" class="value-badge">1.0</span>
+                        </div>
+                        <input type="range" id="freq-slider" min="0.1" max="5.0" step="0.1" value="1.0">
+                        <p class="control-desc">Multiplier for the internal oscillation frequency.</p>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="l-slider">Degree (l):</label>
+                            <span id="l-value" class="value-badge">2</span>
+                        </div>
+                        <input type="range" id="l-slider" min="0" max="6" step="1" value="2">
+                        <p class="control-desc">Total number of nodal lines on the surface.</p>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="m-slider">Order (m):</label>
+                            <span id="m-value" class="value-badge">0</span>
+                        </div>
+                        <input type="range" id="m-slider" min="-2" max="2" step="1" value="0">
+                        <p class="control-desc">Number of longitudinal nodal lines.</p>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="amplitude-slider">Amplitude:</label>
+                            <span id="amplitude-value" class="value-badge">0.1</span>
+                        </div>
+                        <input type="range" id="amplitude-slider" min="0" max="0.5" step="0.01" value="0.1">
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="speed-slider">Time Step (Speed):</label>
+                            <span id="speed-value" class="value-badge">1.0</span>
+                        </div>
+                        <input type="range" id="speed-slider" min="0" max="5" step="0.01" value="1.0">
+                    </div>
                 </div>
-            </div>
+            </details>
 
-            <div class="control-group slider-group">
-                <div class="slider-header">
-                    <label for="l-slider">Degree (l):</label>
-                    <span id="l-value" class="value-badge">2</span>
+            <details style="display: none;">
+                <summary>External Systems</summary>
+                <div class="details-content">
+                    <div class="control-group checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="disk-toggle">
+                            <span class="custom-checkbox"></span>
+                            Be Star Gas Disk
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="exoplanet-toggle">
+                            <span class="custom-checkbox"></span>
+                            Exoplanet Orbit & Transit
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="planet-glow-toggle" checked>
+                            <span class="custom-checkbox"></span>
+                            Exoplanet Glow (White)
+                        </label>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="disk-density-slider">Disk Density:</label>
+                            <span id="disk-density-value" class="value-badge">1.00</span>
+                        </div>
+                        <input type="range" id="disk-density-slider" min="0" max="3" step="0.05" value="1.0">
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="disk-radius-slider">Disk Radius (R_star):</label>
+                            <span id="disk-radius-value" class="value-badge">3.0</span>
+                        </div>
+                        <input type="range" id="disk-radius-slider" min="1.1" max="50.0" step="0.1" value="3.0">
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="planet-radius-slider">Planet Radius (R_jup):</label>
+                            <span id="planet-radius-value" class="value-badge">1.0</span>
+                        </div>
+                        <input type="range" id="planet-radius-slider" min="0.1" max="5.0" step="0.1" value="1.0">
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="planet-distance-slider">Orbital Distance (R_star):</label>
+                            <span id="planet-distance-value" class="value-badge">3.0</span>
+                        </div>
+                        <input type="range" id="planet-distance-slider" min="1.5" max="15.0" step="0.1" value="3.0">
+                    </div>
                 </div>
-                <input type="range" id="l-slider" min="0" max="6" step="1" value="2">
-                <p class="control-desc">Total number of nodal lines on the surface.</p>
-            </div>
+            </details>
 
-            <div class="control-group slider-group">
-                <div class="slider-header">
-                    <label for="m-slider">Order (m):</label>
-                    <span id="m-value" class="value-badge">0</span>
+            <details>
+                <summary>View Options</summary>
+                <div class="details-content">
+                    <div class="control-group checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="node-toggle" checked>
+                            <span class="custom-checkbox"></span>
+                            Nodal Surface
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="realistic-toggle">
+                            <span class="custom-checkbox"></span>
+                            Realistic Photosphere
+                        </label>
+
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="side-by-side-toggle">
+                            <span class="custom-checkbox"></span>
+                            Side-by-Side (Realistic + Nodes)
+                        </label>
+                    </div>
+
+                    <div class="control-group slider-group" id="separation-slider-container" style="display: none;">
+                        <div class="slider-header">
+                            <label for="separation-slider">Separation Distance:</label>
+                            <span id="separation-value" class="value-badge">1.8</span>
+                        </div>
+                        <input type="range" id="separation-slider" min="0.5" max="4.0" step="0.1" value="1.8">
+                    </div>
                 </div>
-                <input type="range" id="m-slider" min="-2" max="2" step="1" value="0">
-                <p class="control-desc">Number of longitudinal nodal lines.</p>
-            </div>
+            </details>
 
-            <div class="control-group slider-group">
-                <div class="slider-header">
-                    <label for="amplitude-slider">Amplitude:</label>
-                    <span id="amplitude-value" class="value-badge">0.1</span>
+            <details>
+                <summary>Rendering & Appearance</summary>
+                <div class="details-content">
+                    <div class="control-group checkboxes">
+
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="normalize-size-toggle">
+                            <span class="custom-checkbox"></span>
+                            Normalize Size (for Comparisons)
+                        </label>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Appearance Colors:</label>
+                        <div class="color-pickers">
+                            <div>
+                                <label for="color-hot">Hot Color</label>
+                                <input type="color" id="color-hot" value="#ffffcc">
+                            </div>
+                            <div>
+                                <label for="color-cool">Cool Color</label>
+                                <input type="color" id="color-cool" value="#ff8000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group slider-group">
+                        <div class="slider-header">
+                            <label for="brightness-slider">Bloom Brightness:</label>
+                            <span id="brightness-value" class="value-badge">1.2</span>
+                        </div>
+                        <input type="range" id="brightness-slider" min="0" max="3" step="0.1" value="1.2">
+                    </div>
+
+                    <div class="control-group">
+                        <button id="reset-camera-btn" class="secondary-btn">Reset Camera View</button>
+                    </div>
                 </div>
-                <input type="range" id="amplitude-slider" min="0" max="0.5" step="0.01" value="0.1">
-            </div>
+            </details>
 
-            <div class="control-group slider-group">
-                <div class="slider-header">
-                    <label for="speed-slider">Time Step (Speed):</label>
-                    <span id="speed-value" class="value-badge">1.0</span>
-                </div>
-                <input type="range" id="speed-slider" min="0" max="5" step="0.1" value="1.0">
-            </div>
 
-            <div class="control-group checkboxes">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="node-toggle" checked>
-                    <span class="custom-checkbox"></span>
-                    Show Nodal Lines
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" id="glow-toggle">
-                    <span class="custom-checkbox"></span>
-                    Brightness Variations
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" id="realistic-toggle">
-                    <span class="custom-checkbox"></span>
-                    Realistic Photosphere
-                </label>
-            </div>
-
-            <div class="control-group">
-                <button id="audio-btn" class="secondary-btn">Enable Sonification (Sound)</button>
-            </div>
-
-            <!-- Enhanced Lightcurve Panel -->
-            <div id="lightcurve-container">
-                <div class="lc-header">
-                    <span class="lc-title">Integrated Lightcurve (ΔF/F)</span>
-                    <span class="lc-status">● LIVE</span>
-                </div>
-                <div class="lc-plot-area">
-                    <canvas id="lightcurve-canvas"></canvas>
-                </div>
-            </div>
 
             <div id="interaction-hint">
                 <p>Drag to rotate &bull; Scroll to zoom</p>
             </div>
 
             <div id="footer">
-                <p>Developed by Enzo Peres Afonso </p>
+                <p style="font-size: 0.75rem; opacity: 0.5;">Developed for fun by Enzo Peres Afonso</p>
+            </div>
+        </div>
+
+        <!-- Welcome Modal -->
+        <div id="welcome-modal-overlay" class="modal-overlay">
+            <div class="modal-content" style="max-width: 600px; text-align: left; padding: 40px; max-height: 85vh; overflow-y: auto;">
+                <h2 style="margin-bottom: 10px;">Asteroseismology Simulator</h2>
+                
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: var(--accent-primary); font-size: 1.1rem; margin-bottom: 5px; font-weight: 500;">What is Asteroseismology?</h3>
+                    <p>Asteroseismology is the study of the internal structure of stars by interpreting their frequency spectra. Stars act as giant resonant cavities where sound waves (p-modes) and gravity waves (g-modes) become trapped. By observing how these waves warp the surface and change the star's brightness, astronomers can precisely determine a star's mass, age, internal rotation, and evolutionary state.</p>
+                    
+                    <h3 style="color: var(--accent-primary); font-size: 1.1rem; margin-top: 25px; margin-bottom: 5px; font-weight: 500;">Spherical Harmonics</h3>
+                    <p>The macroscopic oscillation patterns on the stellar surface are described mathematically by <strong>Spherical Harmonics</strong>, denoted as \( Y_l^m(\theta, \phi) \).</p>
+                    <p style="text-align: center; margin: 20px 0; font-size: 1.1rem; color: var(--text-main);">
+                        \( Y_l^m(\theta, \phi) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi} \)
+                    </p>
+                    <ul style="color: #a0aabf; font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin-top: 15px;">
+                        <li style="margin-bottom: 10px;"><strong>Degree (\(l\)):</strong> The total number of node lines on the stellar surface. Higher \(l\) values correspond to more localized, higher-frequency surface patches.</li>
+                        <li><strong>Order (\(m\)):</strong> The number of longitudinal node lines passing through the poles. \(m\) ranges from \(-l\) to \(+l\). When a star rotates, modes with different \(m\) values split in frequency, revealing the internal rotation rate!</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 35px;">
+                    <button id="start-exploring-btn" class="clean-btn">Start</button>
+                </div>
+                
+                <p style="margin-top: 30px; font-size: 0.7rem; color: var(--text-muted); opacity: 0.5; text-align: center;">Developed for fun by Enzo Peres Afonso</p>
             </div>
         </div>
     </div>
@@ -121,6 +304,6 @@
           }
         }
     </script>
-    <script type="module" src="script.js"></script>
+    <script src="script.js?v=2" type="module"></script>
 </body>
 </html>
