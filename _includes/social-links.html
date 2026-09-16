@@ -1,0 +1,24 @@
+{%- assign a = site.author -%}
+<ul class="social-links" aria-label="Profiles">
+  {%- if a.email and a.email != "" %}
+  <li><a href="mailto:{{ a.email }}" aria-label="Email">{% include icon.html name="mail" %}</a></li>
+  {%- endif %}
+  {%- if a.github and a.github != "" %}
+  <li><a href="https://github.com/{{ a.github }}" aria-label="GitHub" rel="me noopener" target="_blank">{% include icon.html name="github" %}</a></li>
+  {%- endif %}
+  {%- if a.orcid and a.orcid != "" %}
+  <li><a href="https://orcid.org/{{ a.orcid }}" aria-label="ORCID" rel="me noopener" target="_blank">{% include icon.html name="orcid" %}</a></li>
+  {%- endif %}
+  {%- if a.ads and a.ads != "" %}
+  <li><a href="{{ a.ads }}" aria-label="NASA ADS" rel="noopener" target="_blank">{% include icon.html name="ads" %}</a></li>
+  {%- endif %}
+  {%- if a.linkedin and a.linkedin != "" %}
+  <li><a href="https://www.linkedin.com/in/{{ a.linkedin }}" aria-label="LinkedIn" rel="me noopener" target="_blank">{% include icon.html name="linkedin" %}</a></li>
+  {%- endif %}
+  {%- if a.youtube and a.youtube != "" %}
+  <li><a href="https://www.youtube.com/@{{ a.youtube }}" aria-label="YouTube" rel="me noopener" target="_blank">{% include icon.html name="youtube" %}</a></li>
+  {%- endif %}
+  {%- if a.instagram and a.instagram != "" %}
+  <li><a href="https://instagram.com/{{ a.instagram }}" aria-label="Instagram (Zulelinye Outreach)" rel="noopener" target="_blank">{% include icon.html name="instagram" %}</a></li>
+  {%- endif %}
+</ul>

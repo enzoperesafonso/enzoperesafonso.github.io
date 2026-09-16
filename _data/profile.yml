@@ -1,0 +1,31 @@
+# Homepage content. Text fields accept Markdown (links, *italics*, **bold**).
+
+greeting: Hello!
+
+# First paragraph on the homepage. It is followed by your featured projects
+# (featured: true in projects.yml) as a short bullet list.
+intro: |
+  I'm a postgraduate student in astrophysics, and most of my work is about the
+  *how* of astronomy: the code, hardware and instrumentation that turn photons
+  into insight. Since 2024 I've worked with the South African Astronomical
+  Observatory (SAAO) to bring the ROTSE-IIIc telescope in Namibia back to life,
+  contributed to the open-source [pyobs](https://www.pyobs.org) observatory
+  control system, and built machine-learning tools for SAAO's Intelligent
+  Observatory. A few things I've built:
+
+# Shown after the project list.
+outro: |
+  My research interests are observational astronomy, robotic telescope
+  networks, transients (XRBs and CVs) and machine learning for astronomical
+  data. Away from the telescope I co-founded Zulelinye Outreach and make
+  [tactile models](/models.html) so that blind and visually impaired people
+  can explore real astronomical data by touch.
+
+# Your current degree. This sentence stays hidden until `institution` is
+# filled in, then reads: "I'm currently doing a <degree> at <institution>,
+# supervised by <supervisors>. <thesis>"
+current:
+  degree: "BSc (Hons) Astrophysics & Space Science"          # e.g. an MSc in Astrophysics & Space Science
+  institution: "University of Cape Town"     # e.g. the University of Cape Town
+  supervisors: "Dr R. Kuhn"     # e.g. Dr A. Surname and Prof. B. Surname
+  thesis: "My project is on detrending and optimising transit searches to find exoplanets in KELT-South light curves"          # e.g. My thesis is about ...

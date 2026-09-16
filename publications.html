@@ -1,0 +1,38 @@
+---
+layout: default
+title: Publications
+nav: publications
+description: Publications, proceedings, software and talks by Enzo Peres Afonso.
+---
+{%- assign pubs = site.data.publications -%}
+
+<h1>Publications</h1>
+
+<p>An up-to-date list is also on <a href="https://orcid.org/{{ site.author.orcid }}" target="_blank" rel="noopener">ORCID</a>{% if site.author.ads and site.author.ads != "" %} and <a href="{{ site.author.ads }}" target="_blank" rel="noopener">NASA ADS</a>{% endif %}.</p>
+
+{%- if pubs.papers and pubs.papers.size > 0 %}
+<h2>Papers &amp; proceedings</h2>
+<ol class="refs">
+  {%- for p in pubs.papers %}
+  <li>{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' | strip }} ({{ p.year }}). {{ p.title | strip }}. <em>{{ p.venue }}</em>{% if p.status %} ({{ p.status }}){% endif %}.{% if p.links and p.links.size > 0 %} {% include links.html links=p.links %}{% endif %}</li>
+  {%- endfor %}
+</ol>
+{%- endif %}
+
+{%- if pubs.software and pubs.software.size > 0 %}
+<h2>Software &amp; documentation</h2>
+<ol class="refs">
+  {%- for p in pubs.software %}
+  <li>{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' | strip }} ({{ p.year }}). {{ p.title | strip }}. <em>{{ p.venue }}</em>.{% if p.links and p.links.size > 0 %} {% include links.html links=p.links %}{% endif %}</li>
+  {%- endfor %}
+</ol>
+{%- endif %}
+
+{%- if pubs.talks and pubs.talks.size > 0 %}
+<h2>Talks &amp; posters</h2>
+<ul class="news">
+  {%- for t in pubs.talks %}
+  <li><span class="news-date">{{ t.date }}</span>{% if t.type %}{{ t.type }}: {% endif %}"{{ t.title }}", {{ t.event }}{% if t.location %}, {{ t.location }}{% endif %}.{% if t.links and t.links.size > 0 %} {% include links.html links=t.links %}{% endif %}</li>
+  {%- endfor %}
+</ul>
+{%- endif %}

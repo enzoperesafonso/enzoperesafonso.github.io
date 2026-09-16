@@ -1,0 +1,36 @@
+# Homepage news, newest first. The homepage shows the first 6.
+# `date` is plain text, so "Mar 2026" or "2026" both work.
+# `text` accepts Markdown links.
+
+- date: Sep 2026
+  text: >-
+    Finished a 1.1-million-particle simulation of the merger that formed
+    Fornax A (NGC 1316). [Read the write-up](/projects/fornax.html).
+
+- date: May 2026
+  text: >-
+    Released an interactive [asteroseismology simulator](/asteroseismology/)
+    for exploring stellar oscillation modes.
+
+- date: Dec 2025
+  text: >-
+    Launched [AstroTouch Web](https://astrotouch.streamlit.app), a browser
+    version of AstroTouch for making tactile models from FITS data.
+
+- date: 2025
+  text: Completed my BSc in Astrophysics & Physics at the University of Cape Town.
+
+- date: 2024
+  text: >-
+    Awarded an SAAO research grant for a month-long residency with the pyobs
+    team at the Institute for Astrophysics, Göttingen.
+
+- date: 2024
+  text: >-
+    Received a National Bravery Award from Lifesaving South Africa for
+    volunteer surf and helicopter rescue work.
+
+- date: Jan 2024
+  text: >-
+    Joined the SAAO Intelligent Observatory programme and the ROTSE-IIIc
+    telescope restoration project.

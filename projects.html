@@ -1,0 +1,46 @@
+---
+layout: default
+title: Projects
+nav: projects
+description: Observatory software, telescope hardware, machine learning pipelines, simulations and tactile astronomy projects by Enzo Peres Afonso.
+---
+{%- assign data = site.data.projects -%}
+
+<h1>Projects</h1>
+
+<p>Most of my work doesn't end up in a paper: observatory software, telescope hardware, data pipelines, simulations and tactile models. This page is a running list of it. Most of the code is on <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>.</p>
+
+<p class="toc">
+  {%- for c in data.categories %}
+  {%- assign n = data.items | where: "category", c.id | size %}
+  {%- if n > 0 %}<a href="#{{ c.id }}">{{ c.title }}</a>{% unless forloop.last %} · {% endunless %}{% endif %}
+  {%- endfor %}
+</p>
+
+{%- for c in data.categories %}
+{%- assign items = data.items | where: "category", c.id %}
+{%- if items.size > 0 %}
+<h2 id="{{ c.id }}">{{ c.title }}</h2>
+{%- for p in items %}
+<div class="entry" id="{{ p.id }}">
+  {%- if p.video %}
+  <a class="entry-thumb" href="https://www.youtube.com/watch?v={{ p.video }}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/{{ p.video }}/mqdefault.jpg" alt="Video thumbnail for {{ p.title | escape }}" loading="lazy" decoding="async"></a>
+  {%- elsif p.image and p.page %}
+  <a class="entry-thumb{% if p.image_logo %} entry-thumb--logo{% endif %}" href="{{ p.page | relative_url }}"><img src="{{ p.image | relative_url }}" alt="{{ p.image_alt | escape }}" loading="lazy" decoding="async"></a>
+  {%- elsif p.image %}
+  <span class="entry-thumb{% if p.image_logo %} entry-thumb--logo{% endif %}"><img src="{{ p.image | relative_url }}" alt="{{ p.image_alt | escape }}" loading="lazy" decoding="async"></span>
+  {%- endif %}
+  <p class="entry-title"><strong>{% if p.page %}<a href="{{ p.page | relative_url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</strong>{% if p.years or p.org %} <span class="muted">({% if p.years %}{{ p.years }}{% endif %}{% if p.years and p.org %}, {% endif %}{% if p.org %}{{ p.org }}{% endif %})</span>{% endif %}</p>
+  {{ p.summary | markdownify }}
+  {%- if p.role %}<p>My role: {{ p.role }}</p>{% endif %}
+  {%- if p.tags or p.links %}
+  <p class="entry-meta">
+    {%- if p.tags %}<span class="muted">{{ p.tags | join: " · " }}</span>{% endif %}
+    {%- if p.tags and p.links %}<br>{% endif %}
+    {%- if p.links %}{% include links.html links=p.links %}{% endif %}
+  </p>
+  {%- endif %}
+</div>
+{%- endfor %}
+{%- endif %}
+{%- endfor %}

@@ -1,0 +1,217 @@
+# Projects page. Each item appears under its category, in the order written.
+#
+# Fields (only title, category and summary are required):
+#   id          short-name, used for #anchor links
+#   title       project name
+#   category    one of the category ids below
+#   years       e.g. "2024 – present"
+#   org         where / who with
+#   featured    true = also listed on the homepage (keep it to about 4)
+#   short       one-line description used in that homepage list
+#   summary     1–3 sentences, Markdown allowed
+#   role        optional "what I did" line
+#   tags        list of tools / keywords
+#   image       path to a photo or screenshot (shown as a small thumbnail)
+#   image_alt   describe the image for screen readers
+#   image_logo  true for a logo or graphic (shown without a border)
+#   video       YouTube video id (shows the thumbnail instead of an image)
+#   links       list of { label, url }
+#   page        path to a longer write-up page (the title links to it)
+
+categories:
+  - id: instrumentation
+    title: Telescopes & instrumentation
+    description: Control software, drivers and hardware for robotic telescopes.
+  - id: automation
+    title: Automation, ML & tools
+    description: Pipelines and tools that take manual work out of observing.
+  - id: simulations
+    title: Simulations & interactive tools
+    description: Models and visualisations, mostly built to understand something better.
+  - id: accessibility
+    title: Accessible astronomy
+    description: Turning astronomical data into things people can touch.
+
+items:
+  - id: rotse-ocs
+    title: ROTSE-IIIc observatory control system
+    category: instrumentation
+    years: 2024 – present
+    org: SAAO
+    featured: true
+    short: rebuilding the control software of a 20-year-old robotic telescope in Namibia
+    summary: >-
+      Bringing a 20-year-old robotic telescope in Namibia back online. I
+      designed a new observatory control system on the pyobs framework to
+      replace the defunct legacy C software, with asynchronous interfaces
+      that let the original hardware and modern components work together.
+    tags: [Python, pyobs, asyncio, Robotic telescopes]
+    image: /assets/images/projects/rotse-logo.png
+    image_alt: ROTSE Namibia logo
+    image_logo: true
+    links:
+      - label: pyobs
+        url: https://www.pyobs.org
+
+
+  - id: allsky-camera
+    title: All-sky camera & environmental monitoring
+    category: instrumentation
+    years: 2024 – present
+    org: SAAO
+    summary: >-
+      A low-cost custom all-sky camera and environmental monitoring suite. Its
+      real-time telemetry feeds into the telescope's autonomous
+      decision-making.
+    tags: [Embedded systems, PCB design, Fusion 360, Telemetry]
+
+  - id: dome-meteo
+    title: Dome weather sensor network
+    category: instrumentation
+    years: 2026
+    org: SAAO Intelligent Observatory
+    page: /projects/dome-meteorology.html
+    summary: >-
+      Power-over-Ethernet sensor nodes that measure temperature, humidity and
+      pressure inside SAAO's telescope domes. I wrote the ESP32 firmware, which
+      serves each reading as JSON on the observatory network, and designed the
+      3D-printed housing in Fusion 360.
+    tags: [ESP32, C++, Power over Ethernet, Fusion 360, Python]
+    image: /assets/projects/dome-meteo/thumb.jpg
+    image_alt: A 3D-printed grey sensor node with the SAAO IO logo on its lid
+    links:
+      - label: Read more and explore the 3D model
+        url: /projects/dome-meteorology.html
+
+  - id: cloud-detection
+    title: Real-time cloud detection with machine learning
+    category: automation
+    years: 2024 – present
+    org: SAAO Intelligent Observatory
+    featured: true
+    short: spotting clouds in all-sky camera images in real time
+    summary: >-
+      A computer-vision pipeline that automatically detects cloud in all-sky
+      camera images in real time, so observatory software knows what the sky
+      is doing without someone looking up.
+    tags: [Python, Computer vision, Deep learning]
+
+  - id: lesedi-automation
+    title: Lesedi calibration scheduling
+    category: automation
+    years: 2024 – present
+    org: SAAO Intelligent Observatory
+    summary: >-
+      Automated daily flat-field and spectrophotometric standard scheduling
+      for the 1-metre Lesedi telescope, cutting down the manual work in each
+      night's "pre-flight" routine.
+    tags: [Python, Scheduling, Calibration]
+
+  - id: saltshaker
+    title: SALTshaker
+    category: automation
+    years: 2025 – present
+    summary: >-
+      A Python package for planning astronomical observations with the
+      Southern African Large Telescope (SALT).
+    tags: [Python, Observation planning, SALT]
+    links:
+      - label: GitHub
+        url: https://github.com/enzoperesafonso/SALTshaker
+      - label: Docs
+        url: https://saltishaker.readthedocs.io/
+
+  - id: sthweather
+    title: sthweather
+    category: automation
+    years: 2026
+    summary: >-
+      A lightweight, zero-dependency terminal monitor for the weather at the
+      Sutherland observing site.
+    tags: [Shell, CLI]
+    links:
+      - label: GitHub
+        url: https://github.com/enzoperesafonso/sthweather
+
+  - id: fornax
+    title: "Fornax A: a merger simulation"
+    category: simulations
+    years: 2026
+    featured: true
+    short: a million-particle simulation of the merger that built the radio galaxy Fornax A
+    page: /projects/fornax.html
+    summary: >-
+      A 1.1-million-particle N-body model of the merger thought to have formed
+      NGC 1316, run on a Barnes–Hut tree code I wrote in C with OpenMP. The
+      galaxies are calibrated against the observed kinematics, and the remnant's
+      shells, tidal tails and velocity profiles are compared with NGC 1316.
+    tags: [C, OpenMP, N-body, Python, Galaxy mergers]
+    image: /assets/projects/fornax/thumb.jpg
+    image_alt: Simulated cold-gas tidal tails coloured by line-of-sight velocity
+    links:
+      - label: Read the write-up
+        url: /projects/fornax.html
+
+  - id: asteroseismology
+    title: Asteroseismology simulator
+    category: simulations
+    years: 2026
+    featured: true
+    short: explore how stars oscillate, in your browser
+    summary: >-
+      An interactive 3D model of stellar oscillations. Choose a star by
+      spectral type or by T<sub>eff</sub> and log g, then explore how
+      pulsation modes of different degree (l) and order (m) ripple across its
+      surface.
+    tags: [JavaScript, three.js, Stellar physics]
+    image: /assets/images/projects/asteroseismology.jpg
+    image_alt: A star and a spherical-harmonic oscillation pattern rendered in the simulator
+    links:
+      - label: Launch simulator
+        url: /asteroseismology/
+
+  - id: exomoon-transit
+    title: "Detecting Pandora: an exomoon transit"
+    category: simulations
+    summary: >-
+      A model of how we might detect a habitable moon orbiting a gas giant
+      around another star, using Pandora from *Avatar* as the test case.
+    tags: [Python, Transits, Exomoons]
+    video: DhQAOK76zJE
+    links:
+      - label: Watch on YouTube
+        url: https://www.youtube.com/watch?v=DhQAOK76zJE
+
+  - id: gw170817
+    title: "GW170817: real vs simulated"
+    category: simulations
+    summary: >-
+      Visualising the gravitational waves from the GW170817 neutron-star
+      merger, comparing LIGO/Virgo data with a theoretical model.
+    tags: [Python, Gravitational waves, Signal processing]
+    video: ErgA0oa8CDE
+    links:
+      - label: Watch on YouTube
+        url: https://www.youtube.com/watch?v=ErgA0oa8CDE
+
+  - id: astrotouch
+    title: AstroTouch
+    category: accessibility
+    years: 2025 – present
+    featured: true
+    short: turning telescope images into 3D-printable tactile models
+    summary: >-
+      Open-source software that turns astronomical FITS images into
+      3D-printable tactile models, so blind and visually impaired people can
+      explore real telescope data. Also available as a web app, no install
+      needed.
+    tags: [Python, FITS, 3D printing, Accessibility]
+    image: /assets/images/models/jupiter_MIRI.jpg
+    image_alt: A 3D-printed tactile relief of Jupiter made from JWST data
+    links:
+      - label: GitHub
+        url: https://github.com/enzoperesafonso/AstroTouch
+      - label: Web app
+        url: https://astrotouch.streamlit.app
+      - label: Models
+        url: /models.html

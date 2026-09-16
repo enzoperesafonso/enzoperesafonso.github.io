@@ -1,0 +1,48 @@
+# Publications page. Put your own name in **bold** in `authors`.
+# Any section with no entries is hidden.
+
+papers:
+  - authors: "**Afonso, E. P.**, et al."
+    title: >-
+      Refurbishing the ROTSE-III Facility in Namibia: A First Step for the
+      African Integrated Observation System
+    venue: Proceedings of the AstroRob Conference 2025
+    year: 2025
+    status: In prep
+    links: []
+      # - label: arXiv
+      #   url: https://arxiv.org/abs/...
+
+software:
+  - authors: "**Afonso, E. P.**"
+    title: >-
+      AstroTouch: Tactile 3D Modeling of Astronomical FITS Data for Visual
+      Impairment Inclusivity
+    venue: Open-source software & documentation
+    year: 2025
+    links:
+      - label: GitHub
+        url: https://github.com/enzoperesafonso/AstroTouch
+      - label: Web app
+        url: https://astrotouch.streamlit.app
+
+  - authors: "**Afonso, E. P.**"
+    title: "SALTshaker: observation planning for the Southern African Large Telescope"
+    venue: Python package
+    year: 2025
+    links:
+      - label: GitHub
+        url: https://github.com/enzoperesafonso/SALTshaker
+      - label: Docs
+        url: https://saltishaker.readthedocs.io/
+
+# Talks, posters and seminars.
+talks:
+  - title: "Reviving ROTSE-IIIc: A Cost Effective Restoration of a LegacyTelescope in Namibia"
+    event: AstroRob Conference 2025
+    location: Cabo de Gata, Spain
+    date: October 2025
+    type: Poster
+    links:
+      - label: PDF
+        url: https://drive.google.com/file/d/1vGHJavaDGt9wSh93ofkwakfiHZ_tL1M0/view?usp=sharing

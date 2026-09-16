@@ -1,0 +1,71 @@
+---
+layout: default
+title: Dome weather sensor network
+nav: projects
+model_viewer: true
+description: A network of Power-over-Ethernet sensor nodes measuring temperature, humidity and pressure inside SAAO's telescope domes, with custom ESP32 firmware and a 3D-printed housing.
+image: /assets/projects/dome-meteo/node-photo.jpg
+---
+{%- assign dir = '/assets/projects/dome-meteo/' | relative_url -%}
+
+<p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / Dome weather sensors</p>
+
+<h1>A weather-sensor network for SAAO's telescope domes</h1>
+
+<p class="muted">SAAO Intelligent Observatory, 2026 · ESP32 firmware in C++ (Arduino) · housing designed in Fusion 360 · Python tools</p>
+
+<p>Conditions inside a telescope dome matter for observing. Humidity decides whether the optics risk condensation, and temperature differences between the dome, the outside air and the mirror blur the images. For SAAO's Intelligent Observatory I built small, robust sensor nodes that measure temperature, humidity and air pressure inside the domes, and that any computer on the observatory network can read.</p>
+
+<figure class="figure">
+  <div class="model-switch" role="group" aria-label="Choose which model to show">
+    <button type="button" data-src="{{ dir }}node-exploded.glb" aria-pressed="true">Exploded, with electronics</button>
+    <button type="button" data-src="{{ dir }}housing-assembled.glb" aria-pressed="false">Assembled housing</button>
+  </div>
+  <model-viewer class="model-frame" id="node-model" src="{{ dir }}node-exploded.glb"
+                alt="Exploded 3D model of a sensor node: the printed case and lid, the ESP32-POE board, and the separate sensor pod"
+                loading="lazy" camera-controls auto-rotate auto-rotate-delay="1500" rotation-per-second="12deg"
+                touch-action="pan-y" camera-orbit="215deg 55deg auto"
+                environment-image="legacy" tone-mapping="neutral" exposure="0.8" shadow-intensity="0.7"></model-viewer>
+  <figcaption>One node, designed in Fusion 360. The exploded view shows the case and its sliding lid, the Olimex ESP32-POE board, and a separate pod for the BME280 sensor; switch to see the housing assembled. Drag to rotate, scroll or pinch to zoom.</figcaption>
+</figure>
+
+<script>
+  document.querySelectorAll('.model-switch button').forEach(function (btn, _, all) {
+    btn.addEventListener('click', function () {
+      document.getElementById('node-model').src = btn.dataset.src;
+      all.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+    });
+  });
+</script>
+
+<h2>How it works</h2>
+
+<ul class="bullets">
+  <li><strong>One cable.</strong> Each node is an Olimex ESP32-POE board with a BME280 sensor, powered over Ethernet, so a single cable carries both power and data.</li>
+  <li><strong>Pull, don't push.</strong> A node reads its sensor every second in the background and runs a small web server. Any computer on the network asks it for the latest reading and gets JSON back. Nodes never need to know where a central server lives, or cope with it being down.</li>
+  <li><strong>Trustworthy timestamps.</strong> Readings are stamped in UTC from the observatory's GPS-disciplined time server. Until its clock has synced, a node reports no time rather than a wrong one.</li>
+  <li><strong>Set and forget.</strong> A hardware watchdog restarts a node that hangs, a mistyped network setting falls back to automatic addressing instead of taking the node offline, and every node announces itself on the network by name. A Wi-Fi version covers domes without an Ethernet cable.</li>
+</ul>
+
+<p>A reading looks like this (abridged):</p>
+
+<pre class="code"><code>{
+  "device_id": "dome-zenith",
+  "status": "ok",
+  "ntp_status": "synced",
+  "timestamp": "2023-12-04T21:04:04Z",
+  "temperature": 21.5,
+  "humidity": 45.8,
+  "pressure": 1012.5
+}</code></pre>
+
+<p>A small Python script polls a node and exits with a different code depending on whether the node is unreachable or reporting a sensor fault, so it can be used directly in automated health checks.</p>
+
+<h2>The housing</h2>
+
+<p>I designed a four-part housing and 3D-printed it: a case that holds the board, a lid that slides into grooves in the case, and a separate frame and snap-on lid for the sensor, which is wired to the board. Both parts have slots for cable ties, because a jumper wire working loose is the most common failure in the field.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}node-photo.jpg" target="_blank" rel="noopener"><img src="{{ dir }}node-photo.jpg" alt="A printed grey sensor node, with the SAAO IO logo and a vented grille on its lid, connected by a ribbon cable to the small vented sensor pod" loading="lazy" decoding="async" width="1600" height="817"></a>
+  <figcaption>A finished node: the case with the board inside, and the sensor pod on its cable.</figcaption>
+</figure>

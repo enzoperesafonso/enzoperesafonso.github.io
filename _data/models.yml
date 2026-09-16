@@ -1,0 +1,69 @@
+# Tactile 3D models (models.html).
+#
+# Optional interactive viewer: add `model:` pointing at a .glb file (and
+# `model_alt:` describing it). A "View in 3D" button appears under the entry.
+# `model_orbit:` optionally sets the starting camera angle.
+
+- title: JWST Jupiter (MIRI)
+  badge: Tactile data
+  image: /assets/images/models/jupiter_MIRI.jpg
+  image_alt: Tactile relief of Jupiter's cloud bands printed in white
+  summary: >-
+    A high-resolution tactile relief of Jupiter's cloud bands and Great Red
+    Spot, made directly from James Webb Space Telescope MIRI data.
+  details: [FITS to 3D, ~4 h print]
+  link:
+    label: Download files
+    url: https://www.thingiverse.com/thing:7201284
+
+- title: SALT scale model
+  badge: Instrumentation
+  image: /assets/images/models/salt_print.JPG
+  image_alt: 3D-printed scale model of the Southern African Large Telescope
+  summary: >-
+    A scale model of the Southern African Large Telescope, including the
+    segmented primary mirror and tracker assembly.
+  details: [Multi-part assembly, ~12 h print]
+  model: /assets/models/salt.glb
+  model_alt: 3D model of the Southern African Large Telescope building and its tower, designed in Fusion 360
+  model_orbit: 200deg 75deg auto   # starting camera angle: around, down from the top, distance
+  link:
+    label: Download files
+    url: https://www.thingiverse.com/thing:7011667
+
+- title: MeerKAT Galactic Centre
+  badge: Radio
+  image: /assets/images/models/meerkat.png
+  image_alt: Tactile model of the MeerKAT radio image of the Galactic Centre
+  summary: >-
+    The MeerKAT 1.28 GHz mosaic of the Galactic Centre as a tactile surface,
+    turning radio filaments and the central black hole into structures you
+    can feel.
+  details: [Radio data, ~6 h print]
+  link:
+    label: Download files
+    url: https://www.thingiverse.com/thing:7070445
+
+- title: Hercules A multiwavelength mosaic
+  badge: Multiwavelength
+  image: /assets/images/models/multiwavelength.webp
+  image_alt: Layered tactile model of the galaxy Hercules A
+  summary: >-
+    A multi-layer model combining optical (Hubble), X-ray (Chandra) and radio
+    (VLA) data to show the full structure of an active galaxy.
+  details: [Multi-part, Educational]
+  link:
+    label: View collection
+    url: https://www.thingiverse.com/enzoperesafonso/designs
+
+- title: Solar System ruler
+  badge: Education
+  image: /assets/images/models/solarruler.webp
+  image_alt: A 3D-printed ruler for sizing clay planets to scale
+  summary: >-
+    A classroom tool for making scale-accurate clay models of the Solar
+    System, designed for workshops and public outreach.
+  details: [Classroom tool, Workshops]
+  link:
+    label: View collection
+    url: https://www.thingiverse.com/enzoperesafonso/designs

@@ -1,0 +1,18 @@
+{%- assign a = site.author -%}
+<aside class="sidebar">
+  <div class="sb-id">
+    <p class="sb-name"><a href="{{ '/' | relative_url }}">{{ a.name }}</a></p>
+    <p class="sb-position">{{ a.position }}</p>
+    {%- if a.affiliation and a.affiliation != "" %}<p class="sb-position">{{ a.affiliation }}</p>{% endif %}
+  </div>
+  <img class="sb-photo" src="{{ a.photo | relative_url }}" alt="{{ a.photo_alt | escape }}" width="900" height="1200">
+  <nav aria-label="Main">
+    <ul class="sb-nav">
+      {%- for item in site.data.navigation %}
+      <li><a href="{{ item.url | relative_url }}"{% if page.nav == item.id %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+      {%- endfor %}
+      <li><a href="{{ a.cv | relative_url }}" target="_blank" rel="noopener">CV</a></li>
+    </ul>
+  </nav>
+  {% include social-links.html %}
+</aside>

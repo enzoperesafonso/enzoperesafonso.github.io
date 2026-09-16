@@ -1,0 +1,13 @@
+# Sidebar navigation. The CV link is added automatically from _config.yml.
+- id: home
+  title: Home
+  url: /
+- id: projects
+  title: Projects
+  url: /projects.html
+- id: publications
+  title: Publications
+  url: /publications.html
+- id: outreach
+  title: Outreach
+  url: /outreach.html

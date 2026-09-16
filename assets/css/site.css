@@ -1,0 +1,395 @@
+/* ==========================================================================
+   Enzo Peres Afonso: site styles
+   A plain, text-first academic layout over the starfield.
+   ========================================================================== */
+
+:root {
+  --bg: #05060a;
+  --text: #d8dce3;
+  --text-strong: #f2f4f7;
+  --muted: #9199a8;
+  --link: #8cc4ff;
+  --link-hover: #bfdcff;
+  --line: rgba(255, 255, 255, 0.12);
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 2px; }
+
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+h1, h2 {
+  color: var(--text-strong);
+  font-weight: 600;
+  line-height: 1.3;
+}
+h1 { font-size: 1.15rem; margin: 0 0 1rem; }
+h2 {
+  font-size: 1rem;
+  margin: 2.5rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+p { margin: 0 0 1rem; }
+strong { color: var(--text-strong); font-weight: 600; }
+.muted { color: var(--muted); }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--link);
+  color: var(--bg);
+}
+.skip-link:focus { top: 1rem; }
+
+#starfield {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* ---------- Layout ---------- */
+
+.page {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 720px);
+  gap: 4rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2rem;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  position: sticky;
+  top: 3.5rem;
+  align-self: start;
+}
+
+.sb-name {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+.sb-name a { color: var(--text-strong); }
+.sb-name a:hover { text-decoration: none; color: var(--text-strong); }
+.sb-position {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.sb-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 30% 30%;      /* keep the face in frame when cropped */
+  margin: 1.25rem 0 1.5rem;
+  border: 1px solid var(--line);
+}
+
+.sb-nav {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+.sb-nav li { margin: 0.2rem 0; }
+.sb-nav a[aria-current="page"] {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.social-links a { color: var(--muted); display: block; }
+.social-links a:hover { color: var(--text-strong); }
+.icon { display: block; width: 17px; height: 17px; }
+
+/* ---------- Content ---------- */
+
+.content { min-width: 0; }
+
+.prose p, .prose ul { margin: 0 0 1rem; }
+
+.bullets {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+.bullets li { margin: 0.25rem 0; }
+
+.news {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.news li { margin: 0 0 0.85rem; }
+.news-date {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.5rem;
+}
+.news-date::after { content: ":"; }
+
+.toc { color: var(--muted); }
+
+.refs {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.refs li { margin: 0 0 0.85rem; padding-left: 0.25rem; }
+
+/* A project, model or outreach item with an optional thumbnail on the right. */
+.entry {
+  display: flow-root;
+  margin: 0 0 1.75rem;
+  scroll-margin-top: 1.5rem;
+}
+.entry > :last-child { margin-bottom: 0; }
+.entry p { margin-bottom: 0.5rem; }
+.entry-title { margin-bottom: 0.25rem; }
+.entry-meta { font-size: 0.9rem; }
+.entry:target .entry-title strong { color: var(--link-hover); }
+
+.entry-thumb {
+  float: right;
+  width: 150px;
+  margin: 0.3rem 0 0.75rem 1.5rem;
+}
+.entry-thumb--wide { width: 220px; }
+.entry-thumb.entry-thumb--logo img { border: 0; background: none; }
+.entry-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+/* Project write-up pages (projects/*.html). */
+.crumb { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.75rem; }
+
+.figure { margin: 1.5rem 0 2rem; }
+.figure img, .figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+  border: 1px solid var(--line);
+}
+.figure figcaption, .views figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.table-wrap { overflow-x: auto; margin: 0 0 1.25rem; }
+.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.data th, .data td {
+  padding: 0.4rem 1rem 0.4rem 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.data th { color: var(--muted); font-weight: 600; }
+.data td:first-child { white-space: nowrap; color: var(--muted); }
+
+.views {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+.views figure { margin: 0; }
+.views img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+
+@media (max-width: 560px) {
+  .views { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.code {
+  margin: 0 0 1.25rem;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  font: 0.82rem/1.55 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--text);
+}
+
+/* Inline 3D model on project pages, with an optional switch between versions. */
+.model-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  max-height: 75vh;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 50% 40%, #1a1d27, #07080d 75%);
+  --poster-color: transparent;
+}
+.model-switch { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+.model-switch button {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.model-switch button:hover { color: var(--text-strong); border-color: rgba(255, 255, 255, 0.3); }
+.model-switch button[aria-pressed="true"] { color: var(--text-strong); border-color: var(--link); }
+
+/* Interactive 3D model viewer (models.html). */
+.viewer { margin-top: 0.5rem; }
+.viewer[open] { clear: both; }
+.viewer summary {
+  display: inline-block;
+  color: var(--link);
+  font-size: 0.9rem;
+  cursor: pointer;
+  list-style: none;
+}
+.viewer summary::-webkit-details-marker { display: none; }
+.viewer summary::before { content: "▸ "; }
+.viewer[open] summary::before { content: "▾ "; }
+.viewer summary:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 2px; }
+.viewer model-viewer {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  max-height: 70vh;
+  margin-top: 0.75rem;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 50% 40%, #1a1d27, #07080d 75%);
+  --poster-color: transparent;
+}
+.viewer-hint { color: var(--muted); font-size: 0.8rem; margin: 0.4rem 0 0; }
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.5rem;
+}
+.thumbs img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  transition: opacity 0.2s;
+}
+.thumbs a:hover img { opacity: 0.8; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.site-footer p { margin: 0; }
+.site-footer span { text-decoration: underline dotted; text-underline-offset: 3px; }
+
+/* ---------- Starfield telescope speech bubble ---------- */
+
+.telescope-bubble {
+  position: fixed;
+  z-index: 100;
+  max-width: 220px;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(20, 22, 30, 0.95);
+  color: var(--text);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+  white-space: pre-wrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.telescope-bubble.visible { opacity: 1; }
+.telescope-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: rgba(20, 22, 30, 0.95);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 760px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.75rem 1.25rem 1.5rem;
+  }
+
+  .sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 88px;
+    gap: 0 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .sb-id { grid-column: 1; grid-row: 1; }
+  .sb-photo { grid-column: 2; grid-row: 1 / span 2; margin: 0; aspect-ratio: 1; }
+  .sidebar nav { grid-column: 1; }
+  .sb-nav { display: flex; flex-wrap: wrap; gap: 0.1rem 0.9rem; margin: 0.9rem 0 0.8rem; }
+  .sb-nav li { margin: 0; }
+  .social-links { grid-column: 1 / -1; }
+
+  .entry-thumb, .entry-thumb--wide { width: 110px; margin-left: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumbs img, .telescope-bubble { transition: none; }
+}
+
+sub, sup { font-size: 0.7em; line-height: 0; }

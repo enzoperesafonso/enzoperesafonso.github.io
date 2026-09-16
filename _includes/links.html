@@ -1,0 +1,5 @@
+{%- comment -%} Inline list of links: [GitHub] · [Docs] {%- endcomment -%}
+{%- for l in include.links -%}
+{%- unless forloop.first %} · {% endunless -%}
+<a href="{{ l.url | relative_url }}"{% if l.url contains "://" %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}</a>
+{%- endfor -%}

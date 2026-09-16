@@ -1,0 +1,36 @@
+---
+layout: default
+title: Outreach
+nav: outreach
+description: Astronomy outreach by Enzo Peres Afonso, including Zulelinye Outreach and tactile astronomy for blind and visually impaired people.
+image: /assets/images/outreach/IMG_0681.jpg
+---
+{%- assign photos = site.static_files | where_exp: "f", "f.path contains '/assets/images/outreach/'" -%}
+
+<h1>Outreach</h1>
+
+<p>I think the night sky is best when it's shared, so a lot of my time goes into school workshops, stargazing evenings, and finding ways to make astronomy accessible to people who can't see it.</p>
+
+<h2>Zulelinye Outreach</h2>
+<div class="entry">
+  <span class="entry-thumb entry-thumb--wide"><img src="{{ '/assets/images/outreach/IMG_0681.jpg' | relative_url }}" alt="Enzo helping a student look through a telescope" loading="lazy" decoding="async"></span>
+  <p>I co-founded Zulelinye Outreach, which provides STEM mentorship to learners from underserved communities through hands-on workshops and telescope evenings.{% if site.author.instagram and site.author.instagram != "" %} You can follow what we do on <a href="https://instagram.com/{{ site.author.instagram }}" target="_blank" rel="noopener">Instagram</a>.{% endif %}</p>
+</div>
+
+<h2>Astronomy for blind and visually impaired people</h2>
+<div class="entry">
+  <span class="entry-thumb entry-thumb--wide"><img src="{{ '/assets/images/bvi/banner.jpg' | relative_url }}" alt="White 3D-printed tactile astronomy panels laid out on a table" loading="lazy" decoding="async"></span>
+  <p>Astronomy is an overwhelmingly visual science. With <a href="https://github.com/{{ site.author.github }}/AstroTouch" target="_blank" rel="noopener">AstroTouch</a> I turn real telescope images from JWST, Hubble, Chandra and MeerKAT into 3D-printed tactile models, and use them in workshops with blind and visually impaired learners. All the models are free to download: see <a href="{{ '/models.html' | relative_url }}">tactile models</a>.</p>
+</div>
+
+<h2>Beyond astronomy</h2>
+<p>I volunteer as a surf-rescue lifeguard and helicopter rescue swimmer with Lifesaving South Africa, and received a National Bravery Award in 2024.</p>
+
+{%- if photos.size > 0 %}
+<h2>Photos</h2>
+<div class="thumbs">
+  {%- for f in photos %}
+  <a href="{{ f.path | relative_url }}" target="_blank" rel="noopener"><img src="{{ f.path | relative_url }}" alt="Outreach event photo {{ forloop.index }}" loading="lazy" decoding="async"></a>
+  {%- endfor %}
+</div>
+{%- endif %}

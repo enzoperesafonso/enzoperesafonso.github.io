@@ -1,0 +1,54 @@
+# ---------------------------------------------------------------------------
+#  Site settings
+#
+#  Most of the content lives in _data/:
+#    profile.yml       intro, research interests, education, current degree
+#    projects.yml      everything on the Projects page (+ homepage highlights)
+#    news.yml          the News list on the homepage
+#    publications.yml  papers, software and talks
+#    models.yml        the tactile 3D models
+#
+#  Photos dropped into assets/images/outreach/ appear in the outreach gallery
+#  automatically.
+# ---------------------------------------------------------------------------
+
+title: Enzo Peres Afonso
+description: >-
+  Postgraduate astrophysics student building observatory software, robotic
+  telescope hardware and accessible astronomy tools.
+url: https://enzoperesafonso.github.io
+baseurl: ""
+lang: en
+
+author:
+  name: Enzo Peres Afonso
+  # Shown under your name in the sidebar.
+  position: Postgraduate student in Astrophysics & Space Science
+  affiliation: ""  # e.g. University of Cape Town. Leave blank to hide.
+  email: enzo.p.afonso@gmail.com
+  cv: /assets/pdfs/CV.pdf
+  photo: /assets/images/ui/me.jpg
+  photo_alt: Enzo smiling in front of a telescope at dusk
+
+  # Profiles. Leave any of these blank ("") to hide the icon.
+  github: enzoperesafonso
+  orcid: 0009-0004-8246-8666
+  ads: ""          # full URL to your NASA ADS author search or library
+  linkedin: ""     # username only
+  youtube: enzoperesafonso
+  instagram: zulelinye
+  thingiverse: enzoperesafonso
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  # Source exports from Fusion 360; the site uses the converted .glb files.
+  - "assets/models/*.obj"
+  - "assets/models/*.mtl"
+  - "assets/models/*.stl"

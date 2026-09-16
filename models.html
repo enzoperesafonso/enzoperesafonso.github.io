@@ -1,0 +1,46 @@
+---
+layout: default
+title: Tactile models
+nav: outreach
+description: Tactile 3D-printable astronomy models made from real telescope data with AstroTouch, designed for blind and visually impaired audiences.
+image: /assets/images/models/jupiter_MIRI.jpg
+model_viewer: true
+---
+
+<h1>Tactile models</h1>
+
+<p>These models turn astronomical data into something you can hold. They are free to download and print, and most were made with <a href="https://github.com/{{ site.author.github }}/AstroTouch" target="_blank" rel="noopener">AstroTouch</a>, my open-source tool for converting FITS images into tactile surfaces. There's also a <a href="https://astrotouch.streamlit.app" target="_blank" rel="noopener">web version</a> you can try without installing anything.</p>
+
+<h2>Models</h2>
+{%- for m in site.data.models %}
+<div class="entry">
+  <span class="entry-thumb"><img src="{{ m.image | relative_url }}" alt="{{ m.image_alt | escape }}" loading="lazy" decoding="async"></span>
+  <p class="entry-title"><strong>{{ m.title }}</strong>{% if m.badge %} <span class="muted">({{ m.badge }})</span>{% endif %}</p>
+  {{ m.summary | markdownify }}
+  <p class="entry-meta">
+    {%- if m.details %}<span class="muted">{{ m.details | join: " · " }}</span><br>{% endif %}
+    {%- if m.link %}<a href="{{ m.link.url }}" target="_blank" rel="noopener">{{ m.link.label }}</a>{% endif %}
+  </p>
+  {%- if m.model %}
+  <details class="viewer">
+    <summary>View in 3D</summary>
+    <model-viewer src="{{ m.model | relative_url }}" alt="{{ m.model_alt | default: m.title | escape }}"
+                  loading="lazy" camera-controls auto-rotate ar touch-action="pan-y"
+                  {% if m.model_orbit %}camera-orbit="{{ m.model_orbit }}"{% endif %}
+                  environment-image="neutral" tone-mapping="agx" exposure="0.65" shadow-intensity="0.8"></model-viewer>
+    <p class="viewer-hint">Drag to rotate, scroll or pinch to zoom.</p>
+  </details>
+  {%- endif %}
+</div>
+{%- endfor %}
+
+{%- if site.author.thingiverse and site.author.thingiverse != "" %}
+<p>All of my designs are on <a href="https://www.thingiverse.com/{{ site.author.thingiverse }}/designs" target="_blank" rel="noopener">Thingiverse</a>.</p>
+{%- endif %}
+
+<h2>In use</h2>
+<div class="thumbs">
+  <a href="{{ '/assets/images/bvi/67p.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/bvi/67p.jpg' | relative_url }}" alt="Hands holding a tactile model of comet 67P" loading="lazy" decoding="async"></a>
+  <a href="{{ '/assets/images/bvi/prints.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/bvi/prints.jpg' | relative_url }}" alt="Five white tactile panels including Jupiter and a spiral galaxy" loading="lazy" decoding="async"></a>
+  <a href="{{ '/assets/images/bvi/vela.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/bvi/vela.jpg' | relative_url }}" alt="Hands holding a tactile model of the Vela pulsar jets" loading="lazy" decoding="async"></a>
+</div>
