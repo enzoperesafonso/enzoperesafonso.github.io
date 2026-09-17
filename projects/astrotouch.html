@@ -1,0 +1,70 @@
+---
+layout: default
+title: AstroTouch
+nav: projects
+description: "AstroTouch: open-source software that turns astronomical FITS images into 3D-printable tactile models with Braille labels, so blind and visually impaired people can explore real telescope data by touch."
+image: /assets/projects/astrotouch/touch.jpg
+---
+{%- assign dir = '/assets/projects/astrotouch/' | relative_url -%}
+
+<p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / AstroTouch</p>
+
+<h1>AstroTouch: astronomy you can feel</h1>
+
+<p class="muted">2025 – present · open-source Python · adapted from an article I wrote for MNASSA, the journal of the Astronomical Society of Southern Africa</p>
+
+<p>Astronomy is an overwhelmingly visual science. We explain it with images, spectra and graphs, and in doing so we quietly assume everyone in the audience can see. That leaves blind and visually impaired people out of a science that belongs to everyone.</p>
+
+<p>Tactile models are the obvious answer, but making them by hand is slow and tends to lose the science along the way. AstroTouch does it automatically: it takes a real astronomical image and turns it into a 3D-printable relief, mapping brightness to height so the structure in the data becomes something you can run your fingers over.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}touch.jpg" target="_blank" rel="noopener"><img src="{{ dir }}touch.jpg" alt="A hand resting on an orange 3D-printed plaque of Jupiter, with the planet's cloud bands raised as ridges and a line of Braille along the bottom edge" loading="lazy" decoding="async" width="1400" height="1050"></a>
+  <figcaption>A printed model of Jupiter, made from a James Webb Space Telescope image. The cloud bands and the Great Red Spot are raised ridges, and the label along the bottom is Braille.</figcaption>
+</figure>
+
+<h2>How it works</h2>
+
+<p>AstroTouch reads FITS files, the standard format astronomers use, and works out on its own which part of a multi-extension file holds the image. Pixel brightness then becomes height: bright regions, usually the denser or more energetic parts of an object, rise off the plate.</p>
+
+<p>Raw data rarely makes a good tactile model, so the pipeline includes the adjustments that matter for touch rather than for looks:</p>
+
+<ul class="bullets">
+  <li><strong>Scaling</strong> (linear, logarithmic or arcsinh) to bring out faint structure next to bright structure, which astronomical images are full of.</li>
+  <li><strong>Smoothing and clipping</strong>, so a single hot pixel doesn't become a sharp spike that is unpleasant, or painful, to touch.</li>
+  <li><strong>Inverting heights</strong>, for data where the interesting features are the dark ones.</li>
+  <li><strong>Braille labels</strong> in Unified English Braille, added on a flat strip at the base of the model, so a model says what it is.</li>
+</ul>
+
+<p>The result is exported as an STL file that any consumer 3D printer can handle. There's a desktop app with a live 3D preview for adjusting the settings by feel, and a command line for batch work.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}interface.jpg" target="_blank" rel="noopener"><img src="{{ dir }}interface.jpg" alt="The AstroTouch application: controls for dimensions, scaling and labels on the left, and a 3D preview of the Jupiter plaque with its Braille label on the right" loading="lazy" decoding="async" width="1400" height="788"></a>
+  <figcaption>The app, with the 3D preview updating as the settings change.</figcaption>
+</figure>
+
+<h2>An example</h2>
+
+<p>The Jupiter model above started as a JWST MIRI image of the planet. On a 120 mm plate, logarithmic scaling keeps the faint aurorae without flattening the bright cloud bands, and a little smoothing turns the atmospheric structure into ridges that are distinct under a fingertip. A raised border protects the surface, and the Braille strip reads "Jupiter".</p>
+
+<h2>Why it matters here</h2>
+
+<p>Astronomical societies across South Africa run star parties and school visits constantly. With a printed model on the table, a blind visitor can explore the same object that sighted visitors are queueing to see through the eyepiece, at the same time, in the same conversation.</p>
+
+<p>It also puts local science in people's hands. SAAO and SARAO produce world-class images from SALT and MeerKAT; AstroTouch is a way for any club with a 3D printer to turn those into something everyone can explore.</p>
+
+<figure class="figure">
+  <a href="{{ '/assets/images/bvi/banner.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/bvi/banner.jpg' | relative_url }}" alt="Nine white 3D-printed tactile plaques of different astronomical objects laid out on a table" loading="lazy" decoding="async" width="1280" height="590"></a>
+  <figcaption>Models made with AstroTouch from data taken by a range of telescopes. The <a href="{{ '/models.html' | relative_url }}">tactile models page</a> has files to download and print.</figcaption>
+</figure>
+
+<h2>Get it</h2>
+
+<p>AstroTouch is free and open source, and contributions are welcome: code, printed test models, or feedback from people who actually read the models by touch.</p>
+
+<ul class="bullets">
+  <li><a href="https://github.com/enzoperesafonso/AstroTouch" target="_blank" rel="noopener">AstroTouch on GitHub</a>: source, installation and example data.</li>
+  <li><a href="https://astrotouch.streamlit.app" target="_blank" rel="noopener">The web version</a>, if you'd rather not install anything.</li>
+  <li><a href="{{ '/models.html' | relative_url }}">Printable models</a> I've already made.</li>
+</ul>
+
+<p class="muted">AstroTouch is built on Astropy, NumPy, SciPy, PyVista and numpy-stl, with a PySide6 interface. Braille follows the Rules of Unified English Braille (ICEB, 2013).</p>

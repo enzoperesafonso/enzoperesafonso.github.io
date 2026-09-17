@@ -1,0 +1,108 @@
+---
+layout: default
+title: Open weather station
+nav: projects
+description: An open, low-cost weather station for robotic telescopes, built for the ROTSE-III telescope in Namibia, with a 3D-printed enclosure, Raspberry Pi Pico firmware and a Raspberry Pi HAT.
+image: /assets/projects/weather-station/station.png
+---
+{%- assign dir = '/assets/projects/weather-station/' | relative_url -%}
+
+<p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / Open weather station</p>
+
+<h1>An open weather station and all-sky camera for robotic telescopes</h1>
+
+<p class="muted">2024 – present · built for the ROTSE-IIIc telescope in Namibia · enclosure designed in Fusion 360 · Raspberry Pi Pico and MicroPython · circuit board designed in KiCad</p>
+
+<p>A robotic telescope has to decide for itself whether it is safe to open, so it needs to know the wind, humidity, temperature and pressure outside, and whether there is cloud overhead. Commercial observatory weather stations are expensive, so while working on the revival of <a href="{{ '/projects/rotse.html' | relative_url }}">the ROTSE-IIIc telescope</a> in Namibia I built a monitoring suite that anyone can copy: a 3D-printed weather station, a custom all-sky camera, and open firmware and electronics. Its telemetry is what the observatory's control system reads when it decides whether to open the roof.</p>
+
+<div class="figure-pair">
+  <figure class="figure figure--bare">
+    <img src="{{ dir }}station.png" alt="3D render of the assembled weather station: a three-cup anemometer on top of a stack of ribbed radiation screens, on a mounting post" loading="lazy" decoding="async" width="731" height="708">
+    <figcaption>The assembled station.</figcaption>
+  </figure>
+  <figure class="figure figure--bare">
+    <img src="{{ dir }}cutaway.png" alt="Colour-coded cutaway of the station showing the rotor on a ball bearing in the roof, the sensor holder inside the radiation screens, and the steel rods and wing nuts holding the stack together" loading="lazy" decoding="async" width="447" height="800">
+    <figcaption>A section through it: the rotor turns on a ball bearing in the roof, and the sensor sits on a holder inside the radiation screens.</figcaption>
+  </figure>
+</div>
+
+<h2>The enclosure</h2>
+
+<p>The enclosure is 3D-printed in PLA or PETG. The temperature and humidity sensor sits inside a stack of four radiation screens, which shade it from direct sun while letting air flow past, and three steel rods with wing nuts hold the stack together. On top, a three-cup anemometer turns on a permanently lubricated ball bearing on an M8 bolt, with small magnets in the rotor that pass a Hall-effect sensor as it spins. The roof takes heat-set threaded inserts, and the whole station comes apart for maintenance.</p>
+
+<figure class="figure figure--bare">
+  <a href="{{ dir }}exploded.png" target="_blank" rel="noopener"><img src="{{ dir }}exploded.png" alt="Exploded view of the station's printed parts stacked vertically: rotor cap, rotor with cups, roof, radiation screens, sensor holder and base" loading="lazy" decoding="async" width="508" height="1234" style="max-width: 300px; margin: 0 auto;"></a>
+  <figcaption>Exploded view: rotor cap, rotor and cups, roof, radiation screens with spacers, sensor holder and base.</figcaption>
+</figure>
+
+<h2>Electronics and firmware</h2>
+
+<p>The first version runs on a Raspberry Pi Pico with an AHT20 and BMP280 sensor board and an A3144 Hall-effect sensor, wired on a small prototyping board and connected to the sensor head by a 6-core cable with plug-in connectors. I wrote the firmware in MicroPython, including the drivers for both sensors:</p>
+
+<ul class="bullets">
+  <li><strong>Wind speed</strong> comes from counting the magnet's pulses in an interrupt, with debouncing against mechanical noise. The count is turned into a speed using the rotor's circumference and an empirical calibration factor, then smoothed with a rolling average.</li>
+  <li><strong>Temperature</strong> is the average of the AHT20 and BMP280 readings, alongside humidity and pressure.</li>
+  <li><strong>Robustness:</strong> every reading is range-checked and retried if it fails, errors are reported explicitly rather than as plausible-looking numbers, and a watchdog restarts the board if it ever hangs.</li>
+</ul>
+
+<p>Every three seconds the station prints one line over USB:</p>
+
+<pre class="code"><code>T:temperature H:humidity P:pressure WS:wind_speed</code></pre>
+
+<figure class="figure figure--bare">
+  <a href="{{ dir }}wiring.png" target="_blank" rel="noopener"><img src="{{ dir }}wiring.png" alt="Wiring diagram connecting a Raspberry Pi Pico to the temperature, humidity and pressure board and the Hall-effect sensor through 6-pin connectors" loading="lazy" decoding="async" width="1150" height="926" style="max-width: 560px; margin: 0 auto;"></a>
+  <figcaption>Wiring for the first version: the Raspberry Pi Pico (left) and the sensor head (right), joined by 6-pin connectors.</figcaption>
+</figure>
+
+<h2>In the field</h2>
+
+<p>The station has been running on the roof of the ROTSE-IIIc enclosure in Namibia, on a mast alongside the first version of an all-sky camera I built to watch for cloud: a 12.3-megapixel Sony IMX477R sensor behind a 120° lens, in a 3D-printed weatherproof housing under a clear dome. Together the two cost under €200.</p>
+
+<div class="figure-pair">
+  <figure class="figure">
+    <a href="{{ dir }}telescope.jpg" target="_blank" rel="noopener"><img src="{{ dir }}telescope.jpg" alt="The ROTSE-III enclosure open, showing the telescope inside, with the weather station on a mast beside it" loading="lazy" decoding="async" width="1200" height="1600"></a>
+    <figcaption>The ROTSE-III telescope, with the station on the mast beside it.</figcaption>
+  </figure>
+  <figure class="figure">
+    <a href="{{ dir }}install.jpg" target="_blank" rel="noopener"><img src="{{ dir }}install.jpg" alt="A person standing on the roof of the telescope enclosure next to the mounted weather station under a clear blue sky" loading="lazy" decoding="async" width="960" height="1280"></a>
+    <figcaption>Installing it on the enclosure roof.</figcaption>
+  </figure>
+</div>
+
+<div class="figure-pair">
+  <figure class="figure">
+    <a href="{{ dir }}mast.jpg" target="_blank" rel="noopener"><img src="{{ dir }}mast.jpg" alt="Close view of the mast carrying the anemometer, the radiation-screen housing and the all-sky camera's dome, against the Namibian landscape" loading="lazy" decoding="async" width="900" height="1600"></a>
+    <figcaption>The anemometer and radiation screens, next to the all-sky camera's dome.</figcaption>
+  </figure>
+  <figure class="figure">
+    <a href="{{ dir }}allsky-unit.jpg" target="_blank" rel="noopener"><img src="{{ dir }}allsky-unit.jpg" alt="Enzo holding the opened all-sky camera unit, showing the Raspberry Pi and camera board inside its round housing" loading="lazy" decoding="async" width="720" height="1280"></a>
+    <figcaption>The all-sky camera unit, opened up.</figcaption>
+  </figure>
+</div>
+
+<figure class="figure">
+  <a class="video-link" href="https://www.youtube.com/watch?v=Tbw8aFiyU78" target="_blank" rel="noopener">
+    <img src="https://i.ytimg.com/vi/Tbw8aFiyU78/maxresdefault.jpg" alt="Still from the all-sky camera timelapse: a fisheye view of the night sky over the telescope enclosure" loading="lazy" decoding="async" width="1280" height="720">
+    <span class="video-play" aria-hidden="true">▶</span>
+    <span class="sr-only">Watch the all-sky camera timelapse on YouTube</span>
+  </a>
+  <figcaption>The all-sky camera's first night, sped up. <a href="https://www.youtube.com/watch?v=Tbw8aFiyU78" target="_blank" rel="noopener">Watch on YouTube</a>.</figcaption>
+</figure>
+
+<h2>Three months of data</h2>
+
+<p>Between 20 July and 30 October 2025 the station returned hourly averages with 98.5% coverage. Temperatures ran from &minus;2.8 to 31 °C, with the sharp day-night swing of a desert site, and the wind reached 12 m s<sup>-1</sup> (43 km/h). The mean pressure of 811 hPa is what the site's altitude implies.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}data.png" target="_blank" rel="noopener"><img src="{{ dir }}data.png" alt="Three stacked time series from July to October 2025: temperature cycling daily between about 0 and 30 degrees, humidity mostly low with spikes, and wind speed peaking at 12 metres per second" loading="lazy" decoding="async" width="2160" height="1500"></a>
+  <figcaption>Hourly temperature, humidity and wind speed from the station. The humidity channel sticks at 100% from 10 October onwards, which looks like a sensor fault rather than the weather: 348 hours of saturation in a desert spring.</figcaption>
+</figure>
+
+<h2>Version 2: AtmoPi</h2>
+
+<p>The next version replaces the prototyping board with a custom circuit board I designed in KiCad: AtmoPi, a board that plugs straight onto a Raspberry Pi. It has connectors for a BME280 sensor, the anemometer and an internal temperature sensor, relays to switch a fan and a heater, and a slot for a Raspberry Pi camera, so one board can run both the weather sensors and the all-sky camera. The design is open source under the MIT licence.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}atmopi.jpg" target="_blank" rel="noopener"><img src="{{ dir }}atmopi.jpg" alt="3D render of the green AtmoPi circuit board with sensor connectors, a camera slot and a GPIO header" loading="lazy" decoding="async" width="1400" height="822"></a>
+  <figcaption>The AtmoPi board, rendered in KiCad.</figcaption>
+</figure>

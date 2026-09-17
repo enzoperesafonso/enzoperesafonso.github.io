@@ -1,0 +1,95 @@
+---
+layout: default
+title: "ROTSE-IIIc: bringing a telescope back online"
+nav: projects
+description: "Restoring the ROTSE-IIIc robotic telescope in Namibia: a new observatory control system on pyobs, new drivers for legacy hardware, and a low-cost environmental monitoring system."
+image: /assets/projects/weather-station/telescope.jpg
+---
+{%- assign dir = '/assets/projects/rotse/' | relative_url -%}
+
+<p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / ROTSE-IIIc</p>
+
+<h1>Bringing ROTSE-IIIc back online</h1>
+
+<p class="muted">2024 – present · SAAO and the African Astronomical Society · H.E.S.S. site, Khomas Highlands, Namibia</p>
+
+<p>ROTSE, the Robotic Optical Transient Search Experiment, was built to catch the optical afterglows of gamma-ray bursts: four identical 0.45 m f/1.9 telescopes that could slew to a target within seconds. The network went up in 2003 in Texas, Turkey, Australia and Namibia. The Namibian telescope, ROTSE-IIIc, worked for a decade, then was decommissioned in 2013; its camera, focuser and control computer were removed, and it sat dormant for nearly ten years.</p>
+
+<p>In 2022 the African Astronomical Society began a project to revive it as a modern, remotely operable facility for the African astronomical community, and as a first step towards the African Integrated Observation System. I joined in 2024 to work on the control system and instrumentation. By July 2025 the telescope was observing again, operated remotely from Cape Town, over 1,000 km away.</p>
+
+<div class="figure-pair">
+  <figure class="figure">
+    <a href="{{ dir }}night.jpg" target="_blank" rel="noopener"><img src="{{ dir }}night.jpg" alt="Enzo standing in front of the ROTSE-IIIc enclosure at night, with the Milky Way overhead" loading="lazy" decoding="async" width="960" height="1280"></a>
+    <figcaption>ROTSE-IIIc under the Milky Way.</figcaption>
+  </figure>
+  <figure class="figure">
+    <a href="{{ dir }}site.jpg" target="_blank" rel="noopener"><img src="{{ dir }}site.jpg" alt="The closed ROTSE-IIIc enclosure standing on its legs inside a fenced compound in dry Namibian grassland" loading="lazy" decoding="async" width="1050" height="1400"></a>
+    <figcaption>The facility at the H.E.S.S. site in the Khomas Highlands.</figcaption>
+  </figure>
+</div>
+
+<h2>What I worked on</h2>
+
+<ul class="bullets">
+  <li><strong>A new observatory control system.</strong> The original software was a single daemon on a Red Hat 3 machine, long past its end of life. I rebuilt the control system on <a href="https://www.pyobs.org" target="_blank" rel="noopener">pyobs</a>, an open-source Python framework, where each piece of hardware is a separate asynchronous module and a central scheduler drives them.</li>
+  <li><strong>A mount driver.</strong> The telescope's modified AstroWorks Centurion-II fork mount is still run by its original controller, which speaks over a serial line. I wrote an asyncio driver that handles coordinate conversion, motion sequencing and the safety logic, so the mount can be commanded from Python. It reaches about 0.25° pointing accuracy with no pointing model, which is enough for the camera's field of view. The driver is on <a href="https://github.com/enzoperesafonso/schier-mount" target="_blank" rel="noopener">GitHub</a>.</li>
+  <li><strong>Camera and focus interfaces.</strong> The replacement Andor Zyla 5.5 sCMOS camera needed a C-to-Python wrapper to work with pyobs, and the focus mechanism, now a linear actuator in a 3D-printed housing, needed its own driver.</li>
+  <li><strong>Environmental monitoring.</strong> The facility had lost its weather station, so I built a new one for under €200, together with an all-sky camera that watches for cloud. It has its own write-up: <a href="{{ '/projects/weather-station.html' | relative_url }}">the open weather station</a>.</li>
+</ul>
+
+<p>The rest of the restoration was the work of the wider team: the optics were cleaned and recollimated, the camera was mounted on a custom 3D-printed interface, and the obsolete roof electronics were replaced with an Arduino-based controller that the control system can command, with safety interlocks that close the hatch in bad weather.</p>
+
+<figure class="figure figure--bare">
+  <img src="{{ dir }}zyla.png" alt="CAD render of the Andor Zyla 5.5 sCMOS camera on its custom 3D-printed mounting interface" loading="lazy" decoding="async" width="760" height="655" style="max-width: 420px; margin: 0 auto;">
+  <figcaption>The Andor Zyla 5.5 sCMOS camera and the 3D-printed interface that mounts it to the telescope.</figcaption>
+</figure>
+
+<h2>On the sky</h2>
+
+<p>First light came in May 2024. The camera gives a 1.1° × 0.95° field at 1.6 arcseconds per pixel, and commissioning showed it reaching magnitude <em>G</em> ≈ 18 in a 15-minute exposure under dark skies. Before every science exposure, the system takes a short image, solves it against the sky with a local copy of Astrometry.net, and nudges the telescope to centre the target.</p>
+
+<figure class="figure">
+  <a href="{{ '/assets/projects/weather-station/telescope.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/projects/weather-station/telescope.jpg' | relative_url }}" alt="The ROTSE-IIIc enclosure with its hatch open, showing the telescope inside" loading="lazy" decoding="async" width="1200" height="1600" style="max-width: 400px; margin: 0 auto;"></a>
+  <figcaption>The "flip lid" hatch open for observing: the cover swings through 180° to park behind the telescope.</figcaption>
+</figure>
+
+<div class="views">
+  <figure><img src="{{ dir }}cen-a.jpg" alt="ROTSE-IIIc image of the galaxy Centaurus A" loading="lazy" decoding="async" width="1100" height="928"><figcaption>Centaurus A</figcaption></figure>
+  <figure><img src="{{ dir }}m83.jpg" alt="ROTSE-IIIc image of the spiral galaxy M83" loading="lazy" decoding="async" width="1100" height="928"><figcaption>M83</figcaption></figure>
+  <figure><img src="{{ dir }}sombrero.jpg" alt="ROTSE-IIIc image of the Sombrero galaxy" loading="lazy" decoding="async" width="1100" height="928"><figcaption>The Sombrero galaxy</figcaption></figure>
+</div>
+
+<p>The camera inside the dome watches the telescope work through the night:</p>
+
+<figure class="figure">
+  <video controls playsinline loop preload="none" poster="{{ dir }}in-dome-poster.jpg" width="1080" height="810" style="max-width: 560px; margin: 0 auto;">
+    <source src="{{ dir }}in-dome.mp4" type="video/mp4">
+    <a href="{{ dir }}in-dome.mp4">Download the video (MP4)</a>
+  </video>
+  <figcaption>ROTSE-IIIc observing, seen by the in-dome camera in 60-second exposures: the telescope moves between targets under the stars.</figcaption>
+</figure>
+
+<p>The telescope is also fast enough to follow things that move and change. This is Comet 10P/Tempel 2 drifting against the stars, from a sequence taken in July 2026:</p>
+
+<figure class="figure">
+  <video controls playsinline loop preload="none" poster="{{ dir }}comet-poster.jpg" width="720" height="548" style="max-width: 560px; margin: 0 auto;">
+    <source src="{{ dir }}comet.mp4" type="video/mp4">
+    <a href="{{ dir }}comet.mp4">Download the video (MP4)</a>
+  </video>
+  <figcaption>Comet 10P/Tempel 2, tracked across a field of stars. The inset follows the comet itself.</figcaption>
+</figure>
+
+<p>To show the telescope could do high-speed photometry, the team observed the white dwarf pulsar AR Scorpii and recovered its 59-second beat harmonic, the signature found by Marsh et al. (2016) and Potter &amp; Buckley (2018). That is the kind of measurement needed to follow up gamma-ray bursts and gravitational-wave counterparts.</p>
+
+<h2>What's next</h2>
+
+<p>The facility is moving from commissioning into use: a testing phase with astronomers from the University of Namibia, then shared-risk observing later in 2026. Longer term, ROTSE-IIIc is to join the SAAO Intelligent Observatory network and the African Integrated Observation System, giving the continent a telescope that can respond quickly to alerts from surveys such as the Vera C. Rubin Observatory.</p>
+
+<h2>Read more</h2>
+
+<ul class="bullets">
+  <li><a href="{{ '/assets/pdfs/astrorob2025-poster.pdf' | relative_url }}" target="_blank" rel="noopener">Reviving ROTSE-IIIc</a>, my poster at AstroRob 2025 (PDF, 3 MB).</li>
+  <li>"Refurbishing the ROTSE-III Facility in Namibia: A First Step for the African Integrated Observation System", Buckley et al., Revista Mexicana de Astronomía y Astrofísica Conference Series (in preparation).</li>
+</ul>
+
+<p class="muted">The restoration was supported by the African Astronomical Society, the University of Western Kentucky, the American Association of Black Physicists, and Development in Africa with Radio Astronomy, with the help of the H.E.S.S. site staff and Mr Joachim Cranz, who owns the telescope and the land it stands on.</p>

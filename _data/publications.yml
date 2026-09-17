@@ -2,7 +2,7 @@
 # Any section with no entries is hidden.
 
 papers:
-  - authors: "**Afonso, E. P.**, et al."
+  - authors: "Buckley, D. A. H., **Afonso, E. P.**, van Heerden, H. J., Erasmus, N., Husser, T.-O., Foster, C. & Koorts, W."
     title: >-
       Refurbishing the ROTSE-III Facility in Namibia: A First Step for the
       African Integrated Observation System
@@ -38,18 +38,11 @@ software:
 
 # Talks, posters and seminars.
 talks:
-  - title: "Reviving ROTSE-IIIc: A Cost Effective Restoration of a LegacyTelescope in Namibia"
-    event: AstroRob Conference 2025
+  - title: "Reviving ROTSE-IIIc: A Cost Effective Restoration of a Legacy Telescope in Namibia"
+    event: AstroRob 2025
     location: Cabo de Gata, Spain
     date: October 2025
     type: Poster
     links:
       - label: PDF
-        url: https://drive.google.com/file/d/1vGHJavaDGt9wSh93ofkwakfiHZ_tL1M0/view?usp=sharing
-
-
-  - title: "Developing Open Source Observatory Control Systems"
-    event: University of the Free State Department Colloquium
-    location: Free State, South Africa
-    date: December 2025
-    type: Presentation
+        url: /assets/pdfs/astrorob2025-poster.pdf

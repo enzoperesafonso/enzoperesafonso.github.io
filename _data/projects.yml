@@ -46,24 +46,37 @@ items:
       replace the defunct legacy C software, with asynchronous interfaces
       that let the original hardware and modern components work together.
     tags: [Python, pyobs, asyncio, Robotic telescopes]
+    page: /projects/rotse.html
     image: /assets/images/projects/rotse-logo.png
     image_alt: ROTSE Namibia logo
     image_logo: true
     links:
+      - label: Read more
+        url: /projects/rotse.html
       - label: pyobs
         url: https://www.pyobs.org
 
 
-  - id: allsky-camera
-    title: All-sky camera & environmental monitoring
+  - id: weather-station
+    title: Open weather station & all-sky camera
     category: instrumentation
     years: 2024 – present
-    org: SAAO
+    org: ROTSE-III, Namibia · SAAO
+    page: /projects/weather-station.html
     summary: >-
-      A low-cost custom all-sky camera and environmental monitoring suite. Its
-      real-time telemetry feeds into the telescope's autonomous
-      decision-making.
-    tags: [Embedded systems, PCB design, Fusion 360, Telemetry]
+      A low-cost, open environmental monitoring suite for robotic telescopes: a
+      3D-printed weather station with an anemometer and radiation screens, a
+      custom all-sky camera that watches for cloud, and firmware that serves
+      the telemetry a telescope needs to decide whether it can open. Built for
+      the ROTSE-IIIc revival, now growing into AtmoPi, a custom Raspberry Pi
+      board for the next version.
+    tags: [Fusion 360, 3D printing, MicroPython, Raspberry Pi, KiCad, Telemetry]
+    image: /assets/projects/weather-station/thumb.png
+    image_alt: Render of the 3D-printed weather station with its three-cup anemometer
+    image_logo: true
+    links:
+      - label: Read more
+        url: /projects/weather-station.html
 
   - id: dome-meteo
     title: Dome weather sensor network
@@ -77,35 +90,28 @@ items:
       serves each reading as JSON on the observatory network, and designed the
       3D-printed housing in Fusion 360.
     tags: [ESP32, C++, Power over Ethernet, Fusion 360, Python]
-    image: /assets/projects/dome-meteo/thumb.jpg
-    image_alt: A 3D-printed grey sensor node with the SAAO IO logo on its lid
+    image: /assets/projects/dome-meteo/thumb.png
+    image_alt: Render of the sensor node's printed housing, with the SAAO IO logo on its vented lid and the sensor pod beside it
+    image_logo: true
     links:
       - label: Read more and explore the 3D model
         url: /projects/dome-meteorology.html
 
-  - id: cloud-detection
-    title: Real-time cloud detection with machine learning
+  - id: lesedi-preflight
+    title: Automating Lesedi's nightly pre-flight
     category: automation
     years: 2024 – present
     org: SAAO Intelligent Observatory
     featured: true
-    short: spotting clouds in all-sky camera images in real time
+    short: automating the nightly start-up of the Lesedi telescope, from reading the sky to calibrations
     summary: >-
-      A computer-vision pipeline that automatically detects cloud in all-sky
-      camera images in real time, so observatory software knows what the sky
-      is doing without someone looking up.
-    tags: [Python, Computer vision, Deep learning]
-
-  - id: lesedi-automation
-    title: Lesedi calibration scheduling
-    category: automation
-    years: 2024 – present
-    org: SAAO Intelligent Observatory
-    summary: >-
-      Automated daily flat-field and spectrophotometric standard scheduling
-      for the 1-metre Lesedi telescope, cutting down the manual work in each
-      night's "pre-flight" routine.
-    tags: [Python, Scheduling, Calibration]
+      Every night on the 1-metre Lesedi telescope starts with the same
+      routine: work out what the sky is doing, then take flat fields and
+      spectrophotometric standards. I automated it. A computer-vision pipeline
+      detects cloud in all-sky camera images in real time, so the observatory
+      software knows the sky conditions without someone looking up, and the
+      calibrations are scheduled automatically instead of by hand.
+    tags: [Python, Computer vision, Deep learning, Scheduling, Calibration]
 
   - id: saltshaker
     title: SALTshaker
@@ -170,29 +176,25 @@ items:
       - label: Launch simulator
         url: /asteroseismology/
 
-  - id: exomoon-transit
-    title: "Detecting Pandora: an exomoon transit"
+  - id: youtube-sims
+    title: Simulations for YouTube
     category: simulations
     summary: >-
-      A model of how we might detect a habitable moon orbiting a gas giant
-      around another star, using Pandora from *Avatar* as the test case.
-    tags: [Python, Transits, Exomoons]
+      Smaller simulations I've made to explain things on
+      [my YouTube channel](https://www.youtube.com/@enzoperesafonso): what the
+      transit of a habitable moon around a gas giant might look like (using
+      Pandora from *Avatar* as the test case), and the gravitational waves from
+      the GW170817 neutron-star merger, comparing LIGO/Virgo data with a
+      theoretical waveform.
+    tags: [Python, Simulation, Science communication]
     video: DhQAOK76zJE
     links:
-      - label: Watch on YouTube
+      - label: Exomoon transit
         url: https://www.youtube.com/watch?v=DhQAOK76zJE
-
-  - id: gw170817
-    title: "GW170817: real vs simulated"
-    category: simulations
-    summary: >-
-      Visualising the gravitational waves from the GW170817 neutron-star
-      merger, comparing LIGO/Virgo data with a theoretical model.
-    tags: [Python, Gravitational waves, Signal processing]
-    video: ErgA0oa8CDE
-    links:
-      - label: Watch on YouTube
+      - label: GW170817
         url: https://www.youtube.com/watch?v=ErgA0oa8CDE
+      - label: All videos
+        url: https://www.youtube.com/@enzoperesafonso
 
   - id: astrotouch
     title: AstroTouch
@@ -206,9 +208,12 @@ items:
       explore real telescope data. Also available as a web app, no install
       needed.
     tags: [Python, FITS, 3D printing, Accessibility]
+    page: /projects/astrotouch.html
     image: /assets/images/models/jupiter_MIRI.jpg
     image_alt: A 3D-printed tactile relief of Jupiter made from JWST data
     links:
+      - label: Read more
+        url: /projects/astrotouch.html
       - label: GitHub
         url: https://github.com/enzoperesafonso/AstroTouch
       - label: Web app
