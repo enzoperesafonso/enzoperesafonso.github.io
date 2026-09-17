@@ -26,7 +26,7 @@ author:
   position: Postgraduate student in Astrophysics & Space Science
   affiliation: ""  # e.g. University of Cape Town. Leave blank to hide.
   email: enzo.p.afonso@gmail.com
-  cv: /assets/pdfs/CV.pdf
+  cv: ""          # path to your CV PDF; blank hides the CV link in the sidebar (file is /assets/pdfs/CV.pdf)
   photo: /assets/images/ui/me.jpg
   photo_alt: Enzo smiling in front of a telescope at dusk
 

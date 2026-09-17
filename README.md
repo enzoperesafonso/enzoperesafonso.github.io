@@ -18,7 +18,7 @@ You shouldn't need to touch the HTML for most updates. Everything lives in a few
 
 Each file has comments explaining its fields. Other things to know:
 
-- **CV:** replace `assets/pdfs/CV.pdf` and keep the same filename so links don't break.
+- **CV:** the sidebar link is off. Set `cv:` in `_config.yml` back to `/assets/pdfs/CV.pdf` to show it again, and keep that filename so old links don't break.
 - **Outreach photos:** drop them into `assets/images/outreach/` and they appear in the gallery automatically. Resize them first (about 1280px on the long side), e.g. `sips -Z 1280 photo.jpg`.
 - **Location data:** phone photos contain GPS coordinates, and resizing doesn't remove them. Export without location (Photos app: Export → untick *Include Location*; iPhone share sheet: *Options* → Location off) before adding any photo to the site.
 - **3D models:** export from Fusion 360 as OBJ, convert to `.glb`, and keep them small (Draco compression, e.g. `npx @gltf-transform/cli draco in.glb out.glb`). Keep the Fusion source files out of the repo.
