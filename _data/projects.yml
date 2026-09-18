@@ -144,13 +144,14 @@ items:
     category: simulations
     years: 2026
     featured: true
-    short: a million-particle simulation of the merger that built the radio galaxy Fornax A
+    short: an excuse to learn C, by crashing two galaxies together
     page: /projects/fornax.html
     summary: >-
-      A 1.1-million-particle N-body model of the merger thought to have formed
-      NGC 1316, run on a Barnes–Hut tree code I wrote in C with OpenMP. The
-      galaxies are calibrated against the observed kinematics, and the remnant's
-      shells, tidal tails and velocity profiles are compared with NGC 1316.
+      A hobby project to learn C: I wrote a Barnes–Hut N-body code from
+      scratch, then used it to crash two galaxies together the way NGC 1316 is
+      thought to have formed. Gravity only, so it's exploratory rather than
+      research, but the galaxies and their orbit are set up from published
+      measurements, and I compare what comes out with the real thing.
     tags: [C, OpenMP, N-body, Python, Galaxy mergers]
     image: /assets/projects/fornax/thumb.jpg
     image_alt: Simulated cold-gas tidal tails coloured by line-of-sight velocity

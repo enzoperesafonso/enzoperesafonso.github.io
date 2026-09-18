@@ -2,7 +2,7 @@
 layout: default
 title: "Fornax A: a merger simulation"
 nav: projects
-description: A 1.1-million-particle N-body simulation of the galaxy merger thought to have formed NGC 1316 (Fornax A), run with my own C code and compared with observations.
+description: "A hobby project: I wrote an N-body code in C to learn the language, then pointed it at the galaxy merger thought to have formed NGC 1316 (Fornax A). Exploratory, not research."
 image: /assets/projects/fornax/poster.jpg
 ---
 {%- assign dir = '/assets/projects/fornax/' | relative_url -%}
@@ -11,9 +11,11 @@ image: /assets/projects/fornax/poster.jpg
 
 <h1>Fornax A: exploring writing galaxy simulations in C</h1>
 
-<p class="muted">Personal project, 2026 · N-body code written from scratch in C with OpenMP · set-up and analysis in Python</p>
+<p class="muted">Hobby project, 2026 · an excuse to learn C and parallel programming · set-up and analysis in Python</p>
 
-<p>NGC 1316 is the brightest galaxy in the Fornax cluster and the host of the radio source Fornax A. Its outskirts are full of merger debris: stellar loops and shells out to about 160 kpc (Iodice et al. 2017) and neutral-hydrogen tails 70–150 kpc long (Serra et al. 2019). Serra et al. argue that it formed in a roughly 10:1 merger, 1–3 Gyr ago, between a gas-poor lenticular galaxy and a gas-rich spiral like the Milky Way. I built a collisionless N-body model of that scenario, set up from the literature, to see how much of what we observe it can reproduce.</p>
+<p>I wanted to learn C properly, and writing an N-body code seemed a lot more fun than working through exercises. Once it ran, it needed something to simulate, and NGC 1316 was the obvious choice: the brightest galaxy in the Fornax cluster, host of the radio source Fornax A, and clearly the wreckage of a merger. Its outskirts are full of debris, with stellar loops and shells out to about 160 kpc (Iodice et al. 2017) and neutral-hydrogen tails 70–150 kpc long (Serra et al. 2019). Serra et al. argue it came from a roughly 10:1 merger 1–3 Gyr ago, between a gas-poor lenticular galaxy and a gas-rich spiral like the Milky Way. So I tried to crash two galaxies together and see what came out.</p>
+
+<p class="aside-note">To be clear about what this is: a hobby project, not research. It's gravity and nothing else, so there's no gas physics, no star formation, no dust, no feedback and no AGN, which for a galaxy famous for its radio lobes is quite a lot to leave out. What I did do is take the starting conditions seriously, setting the masses, sizes and orbit from published measurements so the thing I'm playing with at least resembles the real galaxy. Everything below is me exploring, not a result.</p>
 
 <figure class="figure">
   <video controls playsinline loop preload="none" poster="{{ dir }}poster.jpg" width="1920" height="960">
@@ -23,7 +25,7 @@ image: /assets/projects/fornax/poster.jpg
   <figcaption>Three billion years of the merger, seen from the direction that best matches NGC 1316 on the sky (north up, east left). Left: stellar surface brightness down to 31 mag arcsec⁻², the depth of deep VST imaging. Right: the cold-gas tracer, coloured by line-of-sight velocity like an HI velocity map. The satellite's first pass at 0.36 Gyr pulls out long tidal tails, and the two nuclei coalesce at about 2 Gyr.</figcaption>
 </figure>
 
-<h2>The model</h2>
+<h2>Setting up the two galaxies</h2>
 
 <div class="table-wrap">
 <table class="data">
@@ -40,11 +42,11 @@ image: /assets/projects/fornax/poster.jpg
 </table>
 </div>
 
-<p>The stellar mass ratio is 10.3:1. I calibrated the primary by fitting the observed velocity-dispersion profile of NGC 1316 (McNeil-Moylan et al. 2012), keeping its stellar mass within the photometric range of Iodice et al. (2017); the adopted model reproduces σ(R) from 1 to 50 kpc. Each galaxy was then evolved on its own for 0.6–1 Gyr to check that it was in equilibrium before the two were put on a collision course. Over 1 Gyr in isolation, the primary's Lagrangian radii drifted by at most 3.7% and its energy was conserved to 3 parts in 10⁴.</p>
+<p>The stellar mass ratio is 10.3:1. This is the part I tried hardest to get right: I picked the big galaxy's masses by fitting the measured velocity-dispersion profile of NGC 1316 (McNeil-Moylan et al. 2012) and kept its stellar mass inside the range the photometry allows (Iodice et al. 2017), so the galaxy I start with is at least the right size and weight. Then I let each galaxy sit on its own for 0.6–1 Gyr to check it didn't fall apart before the collision even started, which is a good way to catch mistakes: over 1 Gyr alone, the big galaxy's structure drifted by at most 3.7% and its energy held to 3 parts in 10⁴.</p>
 
-<h2>The code</h2>
+<h2>The code, which was the actual point</h2>
 
-<p>The simulation runs on a collisionless N-body code I wrote from scratch as a single C11 file. Gravity uses a Barnes–Hut octree with quadrupole moments and the Barnes (1994) offset opening criterion, softened on 100 pc scales. Particles advance with a kick–drift–kick leapfrog on individual block timesteps, and the force calculation is parallelised with OpenMP. The code comes with a validation suite that checks it against problems with known answers, such as the equilibrium of a Plummer sphere and cold collapse. The production run followed 1.135 million particles for 3 Gyr and wrote a snapshot every 5 Myr. Python scripts build the initial conditions and handle the analysis and rendering.</p>
+<p>The simulation runs on a collisionless N-body code I wrote from scratch as a single C11 file, which is where most of the learning happened. Gravity uses a Barnes–Hut octree with quadrupole moments and the Barnes (1994) offset opening criterion, softened on 100 pc scales. Particles advance with a kick–drift–kick leapfrog on individual block timesteps, and the force calculation is parallelised with OpenMP. The code comes with a validation suite that checks it against problems with known answers, such as the equilibrium of a Plummer sphere and cold collapse. The production run followed 1.135 million particles for 3 Gyr and wrote a snapshot every 5 Myr. Python scripts build the initial conditions and handle the analysis and rendering.</p>
 
 <h2>Choosing the orbit</h2>
 
@@ -72,7 +74,7 @@ image: /assets/projects/fornax/poster.jpg
 </table>
 </div>
 
-<h2>Comparing with NGC 1316</h2>
+<h2>How close did it get?</h2>
 
 <p>The final remnant is about 1 Gyr past the merger, at the young end of the 1–3 Gyr age that Serra et al. infer. To compare it with the real galaxy, I rendered it from the direction that best matches the observed kinematics, at the same physical scale, orientation and surface-brightness scale as an image of NGC 1316 from the DESI Legacy Imaging Surveys, taking a distance of 20.8 Mpc.</p>
 
@@ -81,14 +83,14 @@ image: /assets/projects/fornax/poster.jpg
   <figcaption>Top: NGC 1316 in Legacy Surveys DR10 data, in colour and as g-band surface brightness down to 27 mag arcsec⁻², with the companion NGC 1317 just to the north. Bottom: the model at 3 Gyr at the same scale and depth, and down to 31 mag arcsec⁻², the depth of deep VST imaging. Each panel is 200 kpc across, north up and east left. The dark patches around the real galaxy come from the survey's sky subtraction, which removes much of its faint outer light.</figcaption>
 </figure>
 
-<p>At the same depth the model is about the right size, but it is rounder and smoother than NGC 1316, which has dust lanes (there is no dust in the model) and loops of debris visible even in this survey image. The radial profiles are a more quantitative test. The model reproduces the velocity-dispersion profile well (χ²/N = 1.2) and the rotation curve less well (χ²/N = 3.0). Its surface brightness is slightly too high inside 10 kpc and too low beyond about 20 kpc, so it lacks part of the real galaxy's extended envelope.</p>
+<p>At matched depth it's about the right size, which was more than I expected. It is also rounder and smoother than the real thing, which has dust lanes (no dust here) and loops of debris visible even in this survey image. Comparing the profiles: the velocity dispersion comes out close (χ²/N = 1.2), rotation less so (χ²/N = 3.0), and the brightness is a bit high inside 10 kpc and too low beyond 20 kpc, so my galaxy is missing part of the real one's outer envelope. For gravity alone, starting from numbers in papers, that feels like a fair outcome.</p>
 
 <figure class="figure">
   <a href="{{ dir }}profiles.png" target="_blank" rel="noopener"><img src="{{ dir }}profiles.png" alt="Three plots against radius comparing the model with NGC 1316: surface brightness, velocity dispersion and rotation velocity" loading="lazy" decoding="async" width="2160" height="1005"></a>
   <figcaption>Surface brightness, velocity dispersion and rotation of the model (blue) against NGC 1316. Kinematics: integrated light (white) and planetary nebulae (amber) from McNeil-Moylan et al. (2012). Surface brightness: an approximation to Iodice et al. (2017) (dashed) and my own measurement from the Legacy Surveys g-band image (open circles), which stops at 12 kpc because the survey's sky subtraction removes the light further out. Apart from that measurement, the observed values are approximate, read from published figures.</figcaption>
 </figure>
 
-<p>Stripped stars pile up into a shell system that is strongest around 1.8 Gyr, with shells at radii similar to NGC 1316's loops (about 91 and 160 kpc). That agreement says the orbital energy is about right, not that the model predicts where on the sky each loop should be.</p>
+<p>Stripped stars pile up into shells, strongest around 1.8 Gyr, at radii close to NGC 1316's loops (about 91 and 160 kpc). That's satisfying, but it only means the orbit carries roughly the right energy. It certainly doesn't predict where any particular loop sits on the sky.</p>
 
 <h2>One moment, six quantities</h2>
 
@@ -103,13 +105,14 @@ image: /assets/projects/fornax/poster.jpg
   <figure><img src="{{ dir }}view_gas.jpg" alt="Cold gas column density map" loading="lazy" decoding="async" width="540" height="540"><figcaption>Cold-gas column density</figcaption></figure>
 </div>
 
-<h2>Limitations</h2>
+<h2>Everything it leaves out</h2>
 
 <ul class="bullets">
-  <li><strong>No gas physics.</strong> The "gas" is a collisionless tracer that moves only under gravity. Real HI tails fade as gas is stripped, ionised and turned into stars, so the tracer's tails keep growing: past the observed 70–150 kpc by about 2 Gyr and out to 206 kpc by 3 Gyr. It also leaves far too much cold gas behind (8.4×10⁹ M<sub>☉</sub> beyond 20 kpc, against about 7×10⁸ M<sub>☉</sub> of HI observed). There is no star formation, dust or AGN, so the model says nothing about the radio lobes.</li>
+  <li><strong>No gas physics at all.</strong> The "gas" is just particles that feel gravity. Real HI gets stripped, ionised and turned into stars, so my tails never fade: they sail past the observed 70–150 kpc by about 2 Gyr and reach 206 kpc by 3 Gyr, and far too much cold gas survives (8.4×10⁹ M<sub>☉</sub> beyond 20 kpc, against roughly 7×10⁸ M<sub>☉</sub> of real HI).</li>
+  <li><strong>No star formation, dust, feedback or AGN.</strong> Which, for the galaxy behind one of the brightest radio sources in the sky, is a glaring omission. Nothing here says anything about the radio lobes.</li>
   <li><strong>One merger, in isolation.</strong> There is no Fornax cluster potential, no neighbouring NGC 1317 and no later minor accretion.</li>
-  <li><strong>A scenario, not a fit.</strong> The masses are calibrated, but the orbit was picked from three candidates by eye rather than found by a search over orbital parameters.</li>
-  <li><strong>Finite resolution.</strong> Features smaller than about 0.3 kpc are not resolved, and the heavy dark-matter particles slowly heat thin structures.</li>
+  <li><strong>The orbit was chosen by eye.</strong> I tried three and picked the one that looked most like the real tails. A real study would search the orbital parameters properly.</li>
+  <li><strong>Limited resolution.</strong> Nothing smaller than about 0.3 kpc is real, and the heavy dark-matter particles slowly puff up thin structures over time.</li>
 </ul>
 
 <h2>Code</h2>
