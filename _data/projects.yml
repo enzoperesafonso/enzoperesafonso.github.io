@@ -61,7 +61,7 @@ items:
     title: Open weather station & all-sky camera
     category: instrumentation
     years: 2024 – present
-    org: ROTSE-III, Namibia · SAAO
+    org: ROTSE-IIIc, Namibia · SAAO
     page: /projects/weather-station.html
     summary: >-
       A low-cost, open environmental monitoring suite for robotic telescopes: a
@@ -139,6 +139,30 @@ items:
       - label: GitHub
         url: https://github.com/enzoperesafonso/sthweather
 
+  - id: overhead
+    title: "Overhead: print the sky from any moment"
+    category: simulations
+    years: 2026
+    featured: true
+    short: "a free star map maker: posters, planispheres and sky charts as print-ready PDFs"
+    page: /projects/overhead.html
+    summary: >-
+      A free, open-source star map maker. Give it a date, time and place and it
+      draws the sky that was overhead, then exports a print-ready vector PDF:
+      either a poster, a cut-out planisphere you can turn to any night of the
+      year, or a chart of the sky for one evening. It runs entirely in the
+      browser, with no backend and nothing uploaded.
+    tags: [JavaScript, Astronomy, Vector PDF, Open source]
+    image: /assets/projects/overhead/thumb.jpg
+    image_alt: A circular star chart poster captioned "The night we met"
+    links:
+      - label: Try it
+        url: https://enzoperesafonso.github.io/overhead/
+      - label: GitHub
+        url: https://github.com/enzoperesafonso/overhead
+      - label: Read more
+        url: /projects/overhead.html
+
   - id: fornax
     title: "Fornax A: a merger simulation"
     category: simulations
@@ -163,8 +187,6 @@ items:
     title: Asteroseismology simulator
     category: simulations
     years: 2026
-    featured: true
-    short: explore how stars oscillate, in your browser
     summary: >-
       An interactive 3D model of stellar oscillations. Choose a star by
       spectral type or by T<sub>eff</sub> and log g, then explore how

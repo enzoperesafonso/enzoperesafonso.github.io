@@ -23,8 +23,8 @@ lang: en
 author:
   name: Enzo Peres Afonso
   # Shown under your name in the sidebar.
-  position: Postgraduate student in Astrophysics & Space Science
-  affiliation: ""  # e.g. University of Cape Town. Leave blank to hide.
+  position: Honours student in Astrophysics & Space Science
+  affiliation: "University of Cape Town · SAAO"  # shown under your position; blank to hide
   email: enzo.p.afonso@gmail.com
   cv: ""          # path to your CV PDF; blank hides the CV link in the sidebar (file is /assets/pdfs/CV.pdf)
   photo: /assets/images/ui/me.jpg

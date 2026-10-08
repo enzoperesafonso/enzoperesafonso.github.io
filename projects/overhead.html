@@ -1,0 +1,64 @@
+---
+layout: default
+title: Overhead
+nav: projects
+description: "Overhead: a free, open-source star map maker. Turn any moment and place into a print-ready vector PDF of the sky, entirely in your browser."
+image: /assets/projects/overhead/thumb.jpg
+---
+{%- assign dir = '/assets/projects/overhead/' | relative_url -%}
+
+<p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / Overhead</p>
+
+<h1>Overhead: print the sky from any moment</h1>
+
+<p class="muted">2026 · JavaScript, runs entirely in the browser · MIT licence · <a href="https://enzoperesafonso.github.io/overhead/" target="_blank" rel="noopener">try it</a></p>
+
+<p>Overhead turns a date, time and place into the sky that was overhead, and gives you a print-ready vector PDF of it. It makes three things: a poster to frame, a planisphere, and a chart of the sky for a single night.</p>
+
+<p>Star maps like these are usually sold as posters. The astronomy behind them is well established and the data is public, so I wrote a tool that makes them for free. Everything runs in the browser: there is no backend, no account, and nothing is uploaded.</p>
+
+<div class="figure-pair">
+  <figure class="figure">
+    <a href="{{ dir }}poster.jpg" target="_blank" rel="noopener"><img src="{{ dir }}poster.jpg" alt="A finished star map poster: a black circular star chart with constellation lines, captioned 'The night we met', with date, place and coordinates beneath" loading="lazy" decoding="async" width="636" height="900"></a>
+    <figcaption>A finished poster, exported as a vector PDF.</figcaption>
+  </figure>
+  <figure class="figure">
+    <a href="{{ dir }}app.jpg" target="_blank" rel="noopener"><img src="{{ dir }}app.jpg" alt="The Overhead editor: controls for title, place, date and time on the left, with a live preview of the poster on the right" loading="lazy" decoding="async" width="1600" height="1000"></a>
+    <figcaption>The editor, with a live preview that updates as you change things.</figcaption>
+  </figure>
+</div>
+
+<h2>What it makes</h2>
+
+<p><strong>Posters</strong> come in 11 themes with full colour control, a choice of shapes (circle, arch, hexagon, heart or full page), 18 paper sizes, and your own fonts if you want them. The sky is the real one for that moment: precession, the planets, the Sun, the Moon with its phase, and the Milky Way, down to whatever limiting magnitude you choose. A "naked eye only" setting drops it to what someone could actually have seen: stars to magnitude 6, the brighter deep-sky objects and the five visible planets.</p>
+
+<p>The other two are working charts rather than decorations, so they print black on white:</p>
+
+<ul class="bullets">
+  <li>A <strong>planisphere</strong>: a star wheel and a cover with a horizon window. Cut both out, pin them together, and turn the wheel to any date and time to see what is up. It is built for your latitude, and it tells you the correction between clock time and the chart.</li>
+  <li>A <strong>sky-overhead chart</strong> for one date, time and place: a compass ring, altitude circles, the Moon's phase and the planets above the horizon, with instructions for holding it over your head and matching it to the sky.</li>
+</ul>
+
+<div class="figure-pair">
+  <figure class="figure">
+    <a href="{{ dir }}planisphere.jpg" target="_blank" rel="noopener"><img src="{{ dir }}planisphere.jpg" alt="A printable planisphere: a circular star wheel ringed with dates and hours, with constellation lines and instructions for use printed below" loading="lazy" decoding="async" width="672" height="900"></a>
+    <figcaption>The planisphere's star wheel, with the months around the rim and instructions below.</figcaption>
+  </figure>
+  <figure class="figure">
+    <a href="{{ dir }}sky-chart.jpg" target="_blank" rel="noopener"><img src="{{ dir }}sky-chart.jpg" alt="A printable chart of the sky for one night, with compass directions around the edge, constellation names, and notes on the Moon and visible planets" loading="lazy" decoding="async" width="629" height="900"></a>
+    <figcaption>The sky-overhead chart for one night, with the Moon's phase and the planets listed.</figcaption>
+  </figure>
+</div>
+
+<h2>How it works</h2>
+
+<p>Overhead is plain static files, ES modules with no build step, so it will run from any web server or straight off your own machine. Star, constellation, Milky Way and deep-sky data come from <a href="https://github.com/ofrohn/d3-celestial" target="_blank" rel="noopener">d3-celestial</a> (Hipparcos-derived), planet positions use Paul Schlyter's low-precision method, and the PDF is written by <a href="https://github.com/parallax/jsPDF" target="_blank" rel="noopener">jsPDF</a> so the output is true vector rather than a picture of a chart. Stars fainter than magnitude 6 are a megabyte of data, so they only load if you ask for them.</p>
+
+<p>The only thing that ever leaves your browser is the text you type into the place search, which goes to a geocoding service to turn a place name into coordinates. If you'd rather it didn't, type the coordinates yourself.</p>
+
+<h2>Try it</h2>
+
+<ul class="bullets">
+  <li><a href="https://enzoperesafonso.github.io/overhead/" target="_blank" rel="noopener">Make a star map</a> in the browser.</li>
+  <li><a href="https://github.com/enzoperesafonso/overhead" target="_blank" rel="noopener">Source on GitHub</a>, MIT licensed. The bundled data and libraries keep their own licences.</li>
+</ul>

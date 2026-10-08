@@ -102,6 +102,7 @@ strong { color: var(--text-strong); font-weight: 600; }
   font-size: 0.85rem;
   line-height: 1.45;
 }
+.sb-position + .sb-position { margin-top: 0.3rem; }
 
 .sb-photo {
   display: block;

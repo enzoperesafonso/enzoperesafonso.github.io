@@ -2,8 +2,16 @@
 # `date` is plain text, so "Mar 2026" or "2026" both work.
 # `text` accepts Markdown links.
 
+- date: Oct 2026
+  text: >-
+    Released [Overhead](/projects/overhead.html), a free, open-source star map
+    maker that turns any date and place into a print-ready PDF, entirely in the
+    browser.
+
 - date: Jan 2026
-  text: Greatest dream, doing NASSP Honours at UCT!
+  text: >-
+    Started NASSP Honours in Astrophysics & Space Science at UCT. A longstanding
+    dream, this one.
 
 - date: 2025
   text: Completed my BSc in Astrophysics & Physics at the University of Cape Town.
