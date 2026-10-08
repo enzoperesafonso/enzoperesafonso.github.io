@@ -6,59 +6,95 @@ description: "Overhead: a free, open-source star map maker. Turn any moment and 
 image: /assets/projects/overhead/thumb.jpg
 ---
 {%- assign dir = '/assets/projects/overhead/' | relative_url -%}
+{%- assign app = 'https://enzoperesafonso.github.io/overhead/' -%}
+{%- comment -%}
+  Overhead keeps a whole design in the URL, so these hashes reopen the exact poster or
+  chart shown in each figure. They are what the app's own "Copy link" button produces.
+{%- endcomment -%}
+{%- assign d_poster = 'eyJtb2RlIjoicG9zdGVyIiwidGl0bGUiOiJUSEUgU0tZIE9WRVIgUk9UU0UtSUlJYyIsInN1YnRpdGxlIjoiU0FOIFNUQVIgTkFNRVMiLCJkYXRlIjoiMjAyNS0wNy0xMiIsInR6IjoiQWZyaWNhL1dpbmRob2VrIiwicGxhY2VOYW1lIjoiSC5FLlMuUy4gU0lURSwgS0hPTUFTIEhJR0hMQU5EUyIsImxhdCI6LTIzLjI3MTYsImxvbiI6MTYuNTAwMiwidGhlbWUiOiJEZWVwIFNwYWNlIiwicGFnZUJnIjoiIzA3MGIxNiIsImJnTW9kZSI6InJhZGlhbCIsImJnMSI6IiMxYTJhNTUiLCJiZzIiOiIjMDQwNjBkIiwic3Rhck1vZGUiOiJyZWFsaXN0aWMiLCJzdGFyU2F0IjowLjg1LCJsaW5lQ29sb3IiOiIjOGZiMmZmIiwibGluZUFscGhhIjowLjU1LCJsYWJlbENvbG9yIjoiI2I5Y2NmZiIsImdyaWRDb2xvciI6IiM3YWEyZmYiLCJyaW5nQ29sb3IiOiIjOGZiMmZmIiwidGV4dENvbG9yIjoiI2RmZThmZiIsIm13Q29sb3IiOiIjYThjMGZmIiwibXdPcGFjaXR5IjoxLjgsInN0YXJTdHlsZSI6Imdsb3ciLCJsaW1NYWciOjYuMiwic2hvd0NvbnN0IjpmYWxzZSwibWlsa3lXYXkiOnRydWUsImxvcmUiOnRydWUsImxvcmVUcmFkaXRpb24iOiJzYW4iLCJwYWdlU2l6ZSI6IjMww5c0MCBjbSIsImNoYXJ0U2l6ZSI6ODAsImNoYXJ0VG9wIjoxMCwicmluZyI6ImNvbXBhc3MiLCJ1cHBlcmNhc2UiOmZhbHNlfQ' -%}
+{%- assign d_classic = 'eyJtb2RlIjoicG9zdGVyIiwicGxhY2VOYW1lIjoiU0lHTkFMIEhJTEwsIENBUEUgVE9XTiIsImxhdCI6LTMzLjkxNjYsImxvbiI6MTguMzk4NSwiY29uc3ROYW1lcyI6ImxhdGluIn0' -%}
+{%- assign d_vintage = 'eyJtb2RlIjoicG9zdGVyIiwidGl0bGUiOiJPdXIgRmlyc3QgRmxhdCIsImRhdGUiOiIyMDE1LTAzLTA3IiwidGltZSI6IjIxOjAwIiwicGxhY2VOYW1lIjoiV09PRFNUT0NLLCBDQVBFIFRPV04iLCJsYXQiOi0zMy45Mjg0LCJsb24iOjE4LjQ1NzMsInRoZW1lIjoiVmludGFnZSIsInBhZ2VCZyI6IiNlZmUzYzgiLCJiZ01vZGUiOiJyYWRpYWwiLCJiZzEiOiIjZjNlOGNiIiwiYmcyIjoiI2Q4YzI5NCIsImR1c3QiOmZhbHNlLCJzdGFyQ29sb3IiOiIjM2EyYTFhIiwic3RhclNhdCI6MCwibGluZUNvbG9yIjoiIzdhNWIzYSIsImxpbmVBbHBoYSI6MC43NSwibGFiZWxDb2xvciI6IiM1YTQxMjgiLCJncmlkQ29sb3IiOiIjN2E1YjNhIiwicmluZ0NvbG9yIjoiIzVhNDEyOCIsInRleHRDb2xvciI6IiMzYTJhMWEiLCJtd0NvbG9yIjoiIzZiNGYyZSIsIm13T3BhY2l0eSI6MC44LCJtb29uQ29sb3IiOiIjM2EyYTFhIiwiY29uc3ROYW1lcyI6ImxhdGluIiwiY29uc3RCb3JkZXJzIjp0cnVlLCJzaGFwZSI6ImhleGFnb24iLCJjaGFydFNpemUiOjc2LCJjaGFydFRvcCI6MTIsInJpbmciOiJkb3VibGUiLCJyaW5nR2FwIjozLCJwYWdlQm9yZGVyIjoiZG91YmxlIiwiYm9yZGVySW5zZXQiOjEwLCJ0aXRsZUZvbnQiOiJzZXJpZiIsImJvZHlGb250Ijoic2VyaWYiLCJ0aXRsZVNpemUiOjIwLCJ0aXRsZVRyYWNraW5nIjowLjA4LCJ0aXRsZUJvbGQiOnRydWV9' -%}
+{%- assign d_aurora = 'eyJtb2RlIjoicG9zdGVyIiwidGl0bGUiOiJXRSBXQVRDSEVEIFRIRSBNSUxLWSBXQVkiLCJkYXRlIjoiMjAyMy0wNy0xNSIsInRpbWUiOiIyMjo0NSIsInBsYWNlTmFtZSI6IkNFREVSQkVSRywgV0VTVEVSTiBDQVBFIiwibGF0IjotMzIuMzY2NywibG9uIjoxOS4wNjY3LCJkYXRlRm9ybWF0IjoiaXNvIiwidGhlbWUiOiJBdXJvcmEiLCJwYWdlQmciOiIjMDQxMjFhIiwiYmdNb2RlIjoidmVydGljYWwiLCJiZzEiOiIjMDYxMjFmIiwiYmcyIjoiIzBmNGI0OCIsInN0YXJNb2RlIjoicmVhbGlzdGljIiwic3RhckNvbG9yIjoiI2VhZmZmNyIsImxpbmVDb2xvciI6IiM1YmUzYzEiLCJsaW5lQWxwaGEiOjAuNjUsImxhYmVsQ29sb3IiOiIjYTVmMGRhIiwiZ3JpZENvbG9yIjoiIzViZTNjMSIsInJpbmdDb2xvciI6IiM1YmUzYzEiLCJ0ZXh0Q29sb3IiOiIjZDVmZmYyIiwibXdDb2xvciI6IiNiOWZmZTkiLCJtd09wYWNpdHkiOjEuNiwic3RhclN0eWxlIjoiZ2xvdyIsImxpbU1hZyI6Nywic2hvd0NvbnN0IjpmYWxzZSwibWlsa3lXYXkiOnRydWUsInNoYXBlIjoicGFnZSIsImNoYXJ0U2l6ZSI6MTAwLCJib2R5U2l6ZSI6OCwidGV4dFBvcyI6Im92ZXJsYXkifQ' -%}
+{%- assign d_plani = 'eyJtb2RlIjoiY2hhcnQiLCJuYWtlZEV5ZSI6dHJ1ZSwibGltTWFnIjozLCJzdGFyU2l6ZSI6MC44LCJjb25zdE5hbWVzIjoiYWJiciIsInN0YXJOYW1lcyI6MTAsImVjbGlwdGljIjp0cnVlLCJjZWxlc3RpYWxFcXVhdG9yIjp0cnVlLCJwYWdlU2l6ZSI6IkEzIn0' -%}
+{%- assign d_chart = 'eyJtb2RlIjoiY2hhcnQiLCJjaGFydEtpbmQiOiJ6ZW5pdGgiLCJuYWtlZEV5ZSI6dHJ1ZSwiZGF0ZSI6IjIwMjUtMDktMjAiLCJ0aW1lIjoiMjA6MzAiLCJtd09wYWNpdHkiOjEuMiwibGltTWFnIjo0LCJzdGFyU2l6ZSI6MS41LCJjb25zdE5hbWVzIjoibGF0aW4iLCJtaWxreVdheSI6dHJ1ZSwic3Rhck5hbWVzIjoyMCwiZWNsaXB0aWMiOnRydWUsImNlbGVzdGlhbEVxdWF0b3IiOnRydWV9' -%}
 
 <p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / Overhead</p>
 
 <h1>Overhead: print the sky from any moment</h1>
 
-<p class="muted">2026 · JavaScript, runs entirely in the browser · MIT licence · <a href="https://enzoperesafonso.github.io/overhead/" target="_blank" rel="noopener">try it</a></p>
+<p class="muted">2026 · JavaScript, runs entirely in the browser · MIT licence · <a href="{{ app }}" target="_blank" rel="noopener">try it</a></p>
 
 <p>Overhead turns a date, time and place into the sky that was overhead, and gives you a print-ready vector PDF of it. It makes three things: a poster to frame, a planisphere, and a chart of the sky for a single night.</p>
 
 <p>Star maps like these are usually sold as posters. The astronomy behind them is well established and the data is public, so I wrote a tool that makes them for free. Everything runs in the browser: there is no backend, no account, and nothing is uploaded.</p>
 
-<div class="figure-pair">
-  <figure class="figure">
-    <a href="{{ dir }}poster.jpg" target="_blank" rel="noopener"><img src="{{ dir }}poster.jpg" alt="A finished star map poster: a black circular star chart with constellation lines, captioned 'The night we met', with date, place and coordinates beneath" loading="lazy" decoding="async" width="636" height="900"></a>
-    <figcaption>A finished poster, exported as a vector PDF.</figcaption>
-  </figure>
-  <figure class="figure">
-    <a href="{{ dir }}app.jpg" target="_blank" rel="noopener"><img src="{{ dir }}app.jpg" alt="The Overhead editor: controls for title, place, date and time on the left, with a live preview of the poster on the right" loading="lazy" decoding="async" width="1600" height="1000"></a>
-    <figcaption>The editor, with a live preview that updates as you change things.</figcaption>
-  </figure>
-</div>
+<figure class="figure">
+  <a href="{{ dir }}poster.jpg" target="_blank" rel="noopener"><img src="{{ dir }}poster.jpg" alt="A star map poster titled 'The sky over ROTSE-IIIc': a circular chart of a dense Milky Way on deep blue, with San star names such as 'The Male Steenbok' and 'The Fire-Finishing Star' labelled, and the date and coordinates printed beneath" loading="lazy" decoding="async" width="900" height="1200" style="max-width: 400px; margin: 0 auto;"></a>
+  <figcaption>The sky over ROTSE-IIIc, the telescope I work on in Namibia, on a July night, with San names for the stars. Every design carries its settings in its own link, so this one <a href="{{ app }}#c={{ d_poster }}" target="_blank" rel="noopener">opens in the editor</a> ready to be changed.</figcaption>
+</figure>
+
+<figure class="figure">
+  <a href="{{ dir }}app.jpg" target="_blank" rel="noopener"><img src="{{ dir }}app.jpg" alt="The Overhead editor: a panel of settings and a gallery of thirteen example designs on the left, with a live preview of the star map poster on the right" loading="lazy" decoding="async" width="1600" height="1000"></a>
+  <figcaption>The editor, with a preview that redraws as you change things. Thirteen worked examples are there to start from, because a blank set of sliders is a hard place to begin.</figcaption>
+</figure>
 
 <h2>What it makes</h2>
 
-<p><strong>Posters</strong> come in 11 themes with full colour control, a choice of shapes (circle, arch, hexagon, heart or full page), 18 paper sizes, and your own fonts if you want them. The sky is the real one for that moment: precession, the planets, the Sun, the Moon with its phase, and the Milky Way, down to whatever limiting magnitude you choose. A "naked eye only" setting drops it to what someone could actually have seen: stars to magnitude 6, the brighter deep-sky objects and the five visible planets.</p>
+<p><strong>Posters</strong> come in 11 themes with full colour control, seven shapes (circle, rounded square, square, arch, hexagon, heart or the whole page), 18 paper sizes, and your own fonts if you want them.</p>
+
+<div class="views">
+  <figure>
+    <a href="{{ dir }}classic.jpg" target="_blank" rel="noopener"><img src="{{ dir }}classic.jpg" alt="A black circular star chart with white constellation lines on a white page, captioned 'The night we met'" loading="lazy" decoding="async" width="600" height="849"></a>
+    <figcaption>Midnight, the classic circle. <a href="{{ app }}#c={{ d_classic }}" target="_blank" rel="noopener">Open it</a>.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}vintage.jpg" target="_blank" rel="noopener"><img src="{{ dir }}vintage.jpg" alt="A hexagonal star chart printed in brown on aged cream paper inside a double border, captioned 'Our First Flat'" loading="lazy" decoding="async" width="600" height="849"></a>
+    <figcaption>Vintage, as a hexagon with constellation boundaries. <a href="{{ app }}#c={{ d_vintage }}" target="_blank" rel="noopener">Open it</a>.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}aurora.jpg" target="_blank" rel="noopener"><img src="{{ dir }}aurora.jpg" alt="A full-page star map in teal and black with the Milky Way running corner to corner and the title overlaid at the bottom" loading="lazy" decoding="async" width="600" height="849"></a>
+    <figcaption>Aurora, running right to the edge of the page. <a href="{{ app }}#c={{ d_aurora }}" target="_blank" rel="noopener">Open it</a>.</figcaption>
+  </figure>
+</div>
 
 <p>The other two are working charts rather than decorations, so they print black on white:</p>
 
 <ul class="bullets">
-  <li>A <strong>planisphere</strong>: a star wheel and a cover with a horizon window. Cut both out, pin them together, and turn the wheel to any date and time to see what is up. It is built for your latitude, and it tells you the correction between clock time and the chart.</li>
+  <li>A <strong>planisphere</strong>: a star wheel and a cover with a horizon window. Cut both out, pin them together, and turn the wheel to any date and time to see what is up. It is built for your latitude, and it tells you the correction between clock time and the chart. <a href="{{ app }}#c={{ d_plani }}" target="_blank" rel="noopener">Open the Cape Town one</a>.</li>
   <li>A <strong>sky-overhead chart</strong> for one date, time and place: a compass ring, altitude circles, the Moon's phase and the planets above the horizon, with instructions for holding it over your head and matching it to the sky.</li>
 </ul>
 
 <div class="figure-pair">
   <figure class="figure">
-    <a href="{{ dir }}planisphere.jpg" target="_blank" rel="noopener"><img src="{{ dir }}planisphere.jpg" alt="A printable planisphere: a circular star wheel ringed with dates and hours, with constellation lines and instructions for use printed below" loading="lazy" decoding="async" width="672" height="900"></a>
-    <figcaption>The planisphere's star wheel, with the months around the rim and instructions below.</figcaption>
+    <a href="{{ dir }}planisphere.jpg" target="_blank" rel="noopener"><img src="{{ dir }}planisphere.jpg" alt="A printable planisphere star wheel: a circular chart ringed with dates and hours, with constellation abbreviations and instructions printed below" loading="lazy" decoding="async" width="700" height="990"></a>
+    <figcaption>The star wheel, with the months around the rim.</figcaption>
   </figure>
   <figure class="figure">
-    <a href="{{ dir }}sky-chart.jpg" target="_blank" rel="noopener"><img src="{{ dir }}sky-chart.jpg" alt="A printable chart of the sky for one night, with compass directions around the edge, constellation names, and notes on the Moon and visible planets" loading="lazy" decoding="async" width="629" height="900"></a>
-    <figcaption>The sky-overhead chart for one night, with the Moon's phase and the planets listed.</figcaption>
+    <a href="{{ dir }}planisphere-cover.jpg" target="_blank" rel="noopener"><img src="{{ dir }}planisphere-cover.jpg" alt="The planisphere cover sheet: a circle ringed with the hours of the day, a dashed outline marking the horizon window to be cut away, and cutting instructions below" loading="lazy" decoding="async" width="700" height="990"></a>
+    <figcaption>The cover, with a window cut for your own latitude.</figcaption>
   </figure>
 </div>
+
+<figure class="figure">
+  <a href="{{ dir }}sky-chart.jpg" target="_blank" rel="noopener"><img src="{{ dir }}sky-chart.jpg" alt="A printable chart of the sky for one night: a circular map with compass directions around the edge, constellation names, the Milky Way, and notes on the Moon and visible planets" loading="lazy" decoding="async" width="700" height="990" style="max-width: 340px; margin: 0 auto;"></a>
+  <figcaption>The sky-overhead chart for a single evening, printed for one date, time and place. <a href="{{ app }}#c={{ d_chart }}" target="_blank" rel="noopener">Open it</a>.</figcaption>
+</figure>
+
+<h2>The sky it draws</h2>
+
+<p>The sky is the real one for that moment: precession, the planets, the Sun, the Moon with its phase, and the Milky Way, down to whatever limiting magnitude you choose. A "naked eye only" setting drops it to what someone could actually have seen: stars to magnitude 6, the brighter deep-sky objects and the five visible planets.</p>
+
+<p>There is also a set of Southern African star names, from San, Khoikhoi, Xhosa, Zulu and Swazi, and Sotho, Tswana and Venda traditions, which can be printed instead of the Latin constellations. Names, spellings and meanings vary between communities and over time, so what is in Overhead is a small sample drawn from published ethnoastronomy rather than a catalogue, and corrections are very welcome. I wanted it there because the sky I grew up under has been read and named here for a long time, and Orion and Scorpius are only one way of doing it.</p>
 
 <h2>How it works</h2>
 
 <p>Overhead is plain static files, ES modules with no build step, so it will run from any web server or straight off your own machine. Star, constellation, Milky Way and deep-sky data come from <a href="https://github.com/ofrohn/d3-celestial" target="_blank" rel="noopener">d3-celestial</a> (Hipparcos-derived), planet positions use Paul Schlyter's low-precision method, and the PDF is written by <a href="https://github.com/parallax/jsPDF" target="_blank" rel="noopener">jsPDF</a> so the output is true vector rather than a picture of a chart. Stars fainter than magnitude 6 are a megabyte of data, so they only load if you ask for them.</p>
 
-<p>The only thing that ever leaves your browser is the text you type into the place search, which goes to a geocoding service to turn a place name into coordinates. If you'd rather it didn't, type the coordinates yourself.</p>
+<p>The only thing that ever leaves your browser is the text you type into the place search, which goes to <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> to turn a place name into coordinates. If you'd rather it didn't, type the coordinates yourself.</p>
 
 <h2>Try it</h2>
 
 <ul class="bullets">
-  <li><a href="https://enzoperesafonso.github.io/overhead/" target="_blank" rel="noopener">Make a star map</a> in the browser.</li>
+  <li><a href="{{ app }}" target="_blank" rel="noopener">Make a star map</a> in the browser, or open one of the designs above and change it.</li>
   <li><a href="https://github.com/enzoperesafonso/overhead" target="_blank" rel="noopener">Source on GitHub</a>, MIT licensed. The bundled data and libraries keep their own licences.</li>
 </ul>

@@ -150,11 +150,14 @@ items:
       A free, open-source star map maker. Give it a date, time and place and it
       draws the sky that was overhead, then exports a print-ready vector PDF:
       either a poster, a cut-out planisphere you can turn to any night of the
-      year, or a chart of the sky for one evening. It runs entirely in the
-      browser, with no backend and nothing uploaded.
+      year, or a chart of the sky for one evening. Constellations can be
+      labelled with Southern African star names instead of the Latin ones. It
+      runs entirely in the browser, with no backend and nothing uploaded.
     tags: [JavaScript, Astronomy, Vector PDF, Open source]
     image: /assets/projects/overhead/thumb.jpg
-    image_alt: A circular star chart poster captioned "The night we met"
+    image_alt: >-
+      A circular star map of the Milky Way on deep blue, labelled with San star
+      names
     links:
       - label: Try it
         url: https://enzoperesafonso.github.io/overhead/
