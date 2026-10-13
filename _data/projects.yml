@@ -174,11 +174,11 @@ items:
     short: an excuse to learn C, by crashing two galaxies together
     page: /projects/fornax.html
     summary: >-
-      A hobby project to learn C: I wrote a Barnes–Hut N-body code from
-      scratch, then used it to crash two galaxies together the way NGC 1316 is
-      thought to have formed. Gravity only, so it's exploratory rather than
-      research, but the galaxies and their orbit are set up from published
-      measurements, and I compare what comes out with the real thing.
+      I wanted to learn C, so I wrote a Barnes–Hut N-body code from scratch and
+      used it to crash two galaxies together the way NGC 1316 is thought to have
+      formed. It's gravity only, so an exploration rather than a research
+      result, but the galaxies and their orbit are set from published
+      measurements and I check what comes out against the real thing.
     tags: [C, OpenMP, N-body, Python, Galaxy mergers]
     image: /assets/projects/fornax/thumb.jpg
     image_alt: Simulated cold-gas tidal tails coloured by line-of-sight velocity
