@@ -5,28 +5,30 @@ greeting: Hello!
 # First paragraph on the homepage. It is followed by your featured projects
 # (featured: true in projects.yml) as a short bullet list.
 intro: |
-  I'm an Honours student in astrophysics at the University of Cape Town, and
-  I'm mostly interested in the *how* of astronomy: the software, electronics
-  and instruments that get light from the sky to the person trying to measure
-  it. I learn by building things and finding out where they break. Since 2024
-  I've been helping bring the ROTSE-IIIc telescope in Namibia back to life with
-  the South African Astronomical Observatory, contributing to the open-source
-  [pyobs](https://www.pyobs.org) observatory control system, and building tools
-  for SAAO's Intelligent Observatory. Some of what I've worked on:
+  I'm an astrophysics Honours student at the University of Cape Town, and what
+  excites me most is the whole chain from sky to science: the telescopes and
+  electronics that catch the light, the software that points them, and what
+  the data turns out to say. I learn by building things and finding out where
+  they break. Since 2024 I've been part of the team reviving ROTSE-IIIc, a
+  robotic telescope in Namibia that sat dormant for nearly a decade. I designed
+  its new control system and wrote its mount driver, and since 2025 it has been
+  observing again, operated remotely from Cape Town. I also contribute to the
+  open-source [pyobs](https://www.pyobs.org) observatory control system and
+  build tools for SAAO's Intelligent Observatory. Some of what I've worked on:
 
 # Shown after the project list.
 outro: |
-  There's usually a side project on the go, because the best way I know to
-  understand something is to try to build it: a galaxy-merger simulation I
-  wrote to teach myself C, a [star map maker](/projects/overhead.html) anyone
-  can use for free, a simulator for the way stars ring like bells. The other
-  half of it is sharing the sky: I co-founded Zulelinye Outreach, and I make
+  There's always a side project on the go, because the best way I know to
+  understand something is to build it: a galaxy-merger simulation I wrote from
+  scratch in C, a [star map maker](/projects/overhead.html) anyone can use for
+  free, a simulator for the way stars ring like bells. The other half of it is
+  sharing the sky: I co-founded Zulelinye Outreach, and I make
   [tactile models](/models.html) so that blind and visually impaired people can
   explore real telescope data by touch.
 
-  What I'd like to keep working on: observational astronomy, robotic telescopes
-  and the software that runs them, transients (XRBs and CVs), and machine
-  learning applied to astronomical data.
+  What I want to keep working on is time-domain astronomy: robotic telescopes
+  and the software that runs them, transients such as X-ray binaries and
+  cataclysmic variables, and machine learning for astronomical data.
 
 # Your current degree. This sentence stays hidden until `institution` is
 # filled in, then reads: "I'm currently doing a <degree> at <institution>,
@@ -35,4 +37,4 @@ current:
   degree: "a BSc (Hons) in Astrophysics & Space Science"          # e.g. an MSc in Astrophysics & Space Science
   institution: "the University of Cape Town"     # e.g. the University of Cape Town
   supervisors: "Dr R. Kuhn"     # e.g. Dr A. Surname and Prof. B. Surname
-  thesis: "My project is on detrending light curves and tuning transit searches to find exoplanets in KELT-South data."          # e.g. My thesis is about ...
+  thesis: "My project is to clean up KELT-South light curves and tune transit searches so we can find exoplanets hiding in them."          # e.g. My thesis is about ...
