@@ -8,6 +8,9 @@
 - id: publications
   title: Publications
   url: /publications.html
+- id: models
+  title: 3D models
+  url: /models.html
 - id: outreach
   title: Outreach
   url: /outreach.html
