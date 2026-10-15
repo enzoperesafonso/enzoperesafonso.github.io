@@ -25,9 +25,9 @@ categories:
   - id: automation
     title: Automation, ML & tools
     description: Pipelines and tools that take manual work out of observing.
-  - id: simulations
-    title: Simulations & interactive tools
-    description: Models and visualisations, mostly built to understand something better.
+  - id: fun
+    title: Fun projects
+    description: Hardware and software built for the joy of it, mostly to understand something better.
   - id: accessibility
     title: Accessible astronomy
     description: Turning astronomical data into things people can touch.
@@ -141,7 +141,7 @@ items:
 
   - id: overhead
     title: "Overhead: print the sky from any moment"
-    category: simulations
+    category: fun
     years: 2026
     featured: true
     short: "a free star map maker: posters, planispheres and sky charts as print-ready PDFs"
@@ -168,7 +168,7 @@ items:
 
   - id: fornax
     title: "Fornax A: a merger simulation"
-    category: simulations
+    category: fun
     years: 2026
     featured: true
     short: an excuse to learn C, by crashing two galaxies together
@@ -188,7 +188,7 @@ items:
 
   - id: asteroseismology
     title: Asteroseismology simulator
-    category: simulations
+    category: fun
     years: 2026
     summary: >-
       An interactive 3D model of stellar oscillations. Choose a star by
@@ -204,7 +204,7 @@ items:
 
   - id: youtube-sims
     title: Simulations for YouTube
-    category: simulations
+    category: fun
     summary: >-
       Smaller simulations I've made to explain things on
       [my YouTube channel](https://www.youtube.com/@enzoperesafonso): what the
