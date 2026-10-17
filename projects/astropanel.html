@@ -1,0 +1,152 @@
+---
+layout: default
+title: AstroPanel
+nav: projects
+description: "AstroPanel: a 64×32 LED panel on my bookshelf that shows live astronomy, from sidereal time and the ISS to Voyager's light-time and gravitational-wave alerts. Started on a Raspberry Pi Pico 2 W, now running on a Raspberry Pi 3."
+image: /assets/projects/astropanel/shelf-clock.jpg
+---
+{%- assign dir = '/assets/projects/astropanel/' | relative_url -%}
+
+<p class="crumb"><a href="{{ '/projects.html' | relative_url }}">Projects</a> / AstroPanel</p>
+
+<h1>AstroPanel: a live astronomy display for my bookshelf</h1>
+
+<p class="muted">2026 · Raspberry Pi 3, previously a Raspberry Pi Pico 2 W · Python · a 64×32 RGB LED panel · code on GitHub soon</p>
+
+<p>I wanted something on my shelf that tells me what the sky and the space around us are doing right now, without opening a laptop. So I took a cheap 64×32 RGB LED panel, the kind used in shop signs, and turned it into a little observatory dashboard. It cycles through pages: local sidereal time and how long until it's properly dark, the Moon, the status of the ATLAS telescope at Sutherland, space weather, the ISS, Voyager, the live Sun, and more. And when something explodes somewhere in the universe, such as a gamma-ray burst or a gravitational-wave event, it takes over the whole panel within seconds of the alert going out.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}shelf-clock.jpg" target="_blank" rel="noopener"><img src="{{ dir }}shelf-clock.jpg" alt="The LED panel on a bookshelf at night showing UTC, local sidereal time and local time, a half-lit Moon at 42%, and 'DARK FOR 6:10' in green" loading="lazy" decoding="async" width="1280" height="960"></a>
+  <figcaption>The clock page: UTC, local sidereal time and local time, the Moon, and how much astronomical darkness is left tonight.</figcaption>
+</figure>
+
+<figure class="figure">
+  <video controls playsinline loop muted preload="none" poster="{{ dir }}tour-poster.jpg" width="960" height="540">
+    <source src="{{ dir }}tour.mp4" type="video/mp4">
+    <a href="{{ dir }}tour.mp4">Download the video (MP4)</a>
+  </video>
+  <figcaption>A walk through some of the pages: the exoplanet count, the ISS, the Sun in extreme ultraviolet, the GCN alert history, a spiral galaxy, and the clock.</figcaption>
+</figure>
+
+<h2>A few of the pages</h2>
+
+<p>Every page is drawn pixel by pixel with a 3×5 font, from live public data. These are rendered by the panel's own code, with each pixel drawn as an LED:</p>
+
+<div class="views">
+  <figure>
+    <a href="{{ dir }}iss.gif" target="_blank" rel="noopener"><img src="{{ dir }}iss.gif" alt="Pixel world map with day and night shading, the ISS's ground track in cyan and the station blinking along it" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>The ISS, propagated from its orbital elements with SGP4, over a day-night map. It also predicts the next pass I can actually see.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}voyager.gif" target="_blank" rel="noopener"><img src="{{ dir }}voyager.gif" alt="A pixel-art Voyager probe beside its distance in AU, speed and a light-time clock reading about 23 hours 55 minutes" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>Voyager 1 and 2: distance from JPL Horizons, and the time their signal takes to reach us, nearly a full light-day for Voyager 1.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}sun.gif" target="_blank" rel="noopener"><img src="{{ dir }}sun.gif" alt="The Sun as a 32-pixel disc in extreme ultraviolet, labelled AIA 193, 1.2 MK, corona" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>The live Sun from NASA's Solar Dynamics Observatory, squeezed into 32×32 pixels, cycling through four wavelengths.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}dsn.gif" target="_blank" rel="noopener"><img src="{{ dir }}dsn.gif" alt="The Madrid station of the Deep Space Network: dish numbers, spacecraft codes and data rates, with dots flowing along each link" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>NASA's Deep Space Network right now: which dishes at Goldstone, Madrid and Canberra are talking to which spacecraft, and how fast.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}exo.gif" target="_blank" rel="noopener"><img src="{{ dir }}exo.gif" alt="'EXOPLANETS 6451' with '361 IN 2026' and a ticker of discovery methods" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>The confirmed exoplanet count from the NASA Exoplanet Archive, and how many were found this year.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}quakes.gif" target="_blank" rel="noopener"><img src="{{ dir }}quakes.gif" alt="A pixel world map with recent earthquakes as coloured dots and 'BIGGEST M6.9' scrolling along the bottom" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>Earthquakes of magnitude 4.5 and up from the past week (USGS), with big or fresh ones pulsing.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}spacewx.gif" target="_blank" rel="noopener"><img src="{{ dir }}spacewx.gif" alt="Kp 2.7, quiet, solar wind 470 km/s, and a bar chart of the Kp index over the past week" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>Space weather from NOAA: the Kp index over the past week, the solar wind speed and Bz.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}moon.gif" target="_blank" rel="noopener"><img src="{{ dir }}moon.gif" alt="A pixel Moon at 44% with rise and set times, 'WAXING CRES' and 'FULL IN 8D'" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>The Moon: phase, rise and set, and days until it's full.</figcaption>
+  </figure>
+  <figure>
+    <a href="{{ dir }}planets.gif" target="_blank" rel="noopener"><img src="{{ dir }}planets.gif" alt="The five naked-eye planets listed with their altitude, or their next rise time if they're below the horizon" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>Which planets are up, how high, and when the others rise.</figcaption>
+  </figure>
+</div>
+
+<p>There are a few more, such as tides, the weather and a countdown to meteor showers and eclipses. It is all controlled from a small web page on my local network, which also shows a live mirror of the panel.</p>
+
+<p>And for when I just want something nice on the shelf, it has screensavers:</p>
+
+<div class="figure-pair" style="align-items: start;">
+  <figure class="figure">
+    <a href="{{ dir }}galaxy.gif" target="_blank" rel="noopener"><img src="{{ dir }}galaxy.gif" alt="A tilted two-armed spiral galaxy turning slowly, with a glowing yellow core, blue-white arms and pink star-forming spots" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>A spiral galaxy, turning so its arms trail.</figcaption>
+  </figure>
+  <figure class="figure">
+    <a href="{{ dir }}blackhole.gif" target="_blank" rel="noopener"><img src="{{ dir }}blackhole.gif" alt="A black hole with a rotating accretion disc whose far side is bent up over the shadow" loading="lazy" decoding="async" width="320" height="160"></a>
+    <figcaption>A black hole, with the far side of its disc lensed over the top and the inner disc turning fastest.</figcaption>
+  </figure>
+</div>
+
+<figure class="figure">
+  <a href="{{ dir }}shelf-atlas.jpg" target="_blank" rel="noopener"><img src="{{ dir }}shelf-atlas.jpg" alt="The panel showing the ATLAS Sutherland page: 'DARK', 'SLEWING', 'DOME OPEN', 'CLOUDY', with temperature and wind" loading="lazy" decoding="async" width="1280" height="960"></a>
+  <figcaption>The ATLAS page: what the ATLAS telescope at Sutherland is doing tonight, read from its public status.</figcaption>
+</figure>
+
+<h2>Live alerts from NASA's GCN</h2>
+
+<p>My favourite part is plugged into the <a href="https://gcn.nasa.gov" target="_blank" rel="noopener">General Coordinates Network</a>, NASA's system for telling the astronomy community about transient events the moment they are detected, so that telescopes around the world can turn and look. The panel listens to the same live Kafka stream that observatories use:</p>
+
+<ul class="bullets">
+  <li><strong>Gravitational waves</strong> from LIGO, Virgo and KAGRA, with the event's most likely source (binary neutron stars, a neutron star and a black hole, or two black holes) and how often noise alone would fake a signal like it.</li>
+  <li><strong>Gamma-ray bursts</strong> from Swift, Fermi and SVOM, and X-ray flashes from Einstein Probe, with the position on the sky.</li>
+  <li><strong>High-energy neutrinos</strong> from IceCube at the South Pole.</li>
+  <li><strong>GCN Circulars</strong>, the short reports astronomers post as they follow an event up.</li>
+</ul>
+
+<p>A significant event takes over the whole panel for 40 seconds with a flashing border, the type of event and the details scrolling past. Circulars get a quieter amber banner, and everything is kept on a history page. I can tune all of it from the web page, including whether alerts are allowed to wake the panel up in the middle of the night.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}gcn-alert.gif" target="_blank" rel="noopener"><img src="{{ dir }}gcn-alert.gif" alt="The panel's full-screen alert: a flashing orange border, 'GCN GW' and 'GRAV WAVE', with the event details scrolling along the bottom" loading="lazy" decoding="async" width="320" height="160" style="max-width: 480px; width: 100%; margin: 0 auto;"></a>
+  <figcaption>What a gravitational-wave alert looks like, rendered with a made-up event: a 97% binary neutron star merger. The real ones arrive whenever the universe feels like it.</figcaption>
+</figure>
+
+<p>It is a strange feeling to be reading on the couch while the shelf lights up because two neutron stars collided hundreds of millions of years ago, and their gravitational waves washed through the room a few minutes earlier.</p>
+
+<h2>From a Pico to a Pi</h2>
+
+<p>The first version ran on a Raspberry Pi Pico 2 W in CircuitPython, using its built-in HUB75 driver. It worked, and it was a good lesson in how far a microcontroller can stretch: hand-rolled NTP, a tiny web server, and fetching the data in pieces small enough to fit in memory. But the display froze every time it fetched data, animated GIFs were limited by RAM, and colours came down to a few bits.</p>
+
+<p>So it moved to a Raspberry Pi 3 running full Python. The panel is driven by Henner Zeller's <a href="https://github.com/hzeller/rpi-rgb-led-matrix" target="_blank" rel="noopener">rpi-rgb-led-matrix</a> library, which bit-bangs the panel from the GPIO pins in a dedicated thread. Fetching now happens in the background, so the picture never stutters. That opened the door to everything above: real orbit propagation for the ISS, a live Kafka stream of <a href="https://gcn.nasa.gov" target="_blank" rel="noopener">NASA GCN</a> alerts, full-colour images, and settings that survive a reboot.</p>
+
+<p>One quirk: my panel is a "-32S" type, and it only behaves when the library is told it is a 64×64 panel and the picture is drawn in the bottom half.</p>
+
+<h2>Wiring and power</h2>
+
+<p>HUB75 panels are simple: shift registers you clock data into, two rows at a time. There is no HAT, just jumper wires from the panel's input connector straight to the Pi's GPIO header, using the library's "regular" pin mapping:</p>
+
+<div class="table-wrap">
+<table class="data">
+  <thead><tr><th>Signal</th><th>What it does</th><th>Pi GPIO</th></tr></thead>
+  <tbody>
+    <tr><td>R1 G1 B1</td><td>Colour for a row in the top half</td><td>11, 27, 7</td></tr>
+    <tr><td>R2 G2 B2</td><td>Colour for the matching row in the bottom half</td><td>8, 9, 10</td></tr>
+    <tr><td>A B C D E</td><td>Which pair of rows is lit</td><td>22, 23, 24, 25, 15</td></tr>
+    <tr><td>CLK</td><td>Shifts in one pixel's colour</td><td>17</td></tr>
+    <tr><td>LAT</td><td>Latches a finished row</td><td>4</td></tr>
+    <tr><td>OE</td><td>Turns the row on, with hardware-timed pulses for brightness</td><td>18</td></tr>
+    <tr><td>GND</td><td>Shared ground</td><td>any GND pin</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Using GPIO18 for OE lets the Pi's PWM hardware time the brightness pulses, which keeps the image steady. The Pi's audio uses that same hardware, so sound has to be switched off. The 3.3 V logic from the Pi drives the panel directly without a level shifter, which works with short wires.</p>
+
+<p>The panel can draw several amps with lots of pixels lit, far more than a Pi's pins can supply. So it has its own 5 V, 6 A power supply going into its power connector, with the ground shared with the Pi.</p>
+
+<figure class="figure">
+  <a href="{{ dir }}wiring.jpg" target="_blank" rel="noopener"><img src="{{ dir }}wiring.jpg" alt="The back of the LED panel with its red and black power leads, and a Raspberry Pi in an orange case connected by a bundle of coloured jumper wires" loading="lazy" decoding="async" width="960" height="1280" style="max-width: 420px; margin: 0 auto;"></a>
+  <figcaption>Behind the shelf: the panel's 5 V power leads, and the Pi 3 with its bundle of jumper wires.</figcaption>
+</figure>
+
+<h2>What's next</h2>
+
+<p>It is very much a project I keep adding to: event popups when a visible ISS pass is about to start, countdowns to meteor showers and eclipses, and more screensavers. The code will be on <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a> soon.</p>

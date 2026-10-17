@@ -127,17 +127,44 @@ items:
       - label: Docs
         url: https://saltishaker.readthedocs.io/
 
-  - id: sthweather
-    title: sthweather
-    category: automation
+  - id: astropanel
+    title: "AstroPanel: live astronomy on an LED panel"
+    category: fun
     years: 2026
+    page: /projects/astropanel.html
     summary: >-
-      A lightweight, zero-dependency terminal monitor for the weather at the
-      Sutherland observing site.
-    tags: [Shell, CLI]
+      A 64×32 RGB LED panel on my bookshelf that shows what the sky is doing
+      right now: sidereal time and tonight's darkness, the ISS, Voyager's
+      light-time, the live Sun, and gravitational-wave and gamma-ray burst
+      alerts that take over the panel, plus a few pixel-art screensavers. It
+      started on a Raspberry Pi Pico 2 W and now runs on a Raspberry Pi 3,
+      wired straight to the panel.
+    tags: [Raspberry Pi, Python, CircuitPython, HUB75, rpi-rgb-led-matrix]
+    image: /assets/projects/astropanel/thumb.jpg
+    image_alt: The LED panel showing UTC, sidereal and local time, the Moon and "DARK FOR 6:10"
     links:
-      - label: GitHub
-        url: https://github.com/enzoperesafonso/sthweather
+      - label: Read more
+        url: /projects/astropanel.html
+
+  - id: fornax
+    title: "Fornax A: a merger simulation"
+    category: fun
+    years: 2026
+    featured: true
+    short: an excuse to learn C, by crashing two galaxies together
+    page: /projects/fornax.html
+    summary: >-
+      I wanted to learn C, so I wrote a Barnes–Hut N-body code from scratch and
+      used it to crash two galaxies together the way NGC 1316 is thought to have
+      formed. It's gravity only, so an exploration rather than a research
+      result, but the galaxies and their orbit are set from published
+      measurements and I check what comes out against the real thing.
+    tags: [C, OpenMP, N-body, Python, Galaxy mergers]
+    image: /assets/projects/fornax/thumb.jpg
+    image_alt: Simulated cold-gas tidal tails coloured by line-of-sight velocity
+    links:
+      - label: Read the write-up
+        url: /projects/fornax.html
 
   - id: overhead
     title: "Overhead: print the sky from any moment"
@@ -165,62 +192,6 @@ items:
         url: https://github.com/enzoperesafonso/overhead
       - label: Read more
         url: /projects/overhead.html
-
-  - id: fornax
-    title: "Fornax A: a merger simulation"
-    category: fun
-    years: 2026
-    featured: true
-    short: an excuse to learn C, by crashing two galaxies together
-    page: /projects/fornax.html
-    summary: >-
-      I wanted to learn C, so I wrote a Barnes–Hut N-body code from scratch and
-      used it to crash two galaxies together the way NGC 1316 is thought to have
-      formed. It's gravity only, so an exploration rather than a research
-      result, but the galaxies and their orbit are set from published
-      measurements and I check what comes out against the real thing.
-    tags: [C, OpenMP, N-body, Python, Galaxy mergers]
-    image: /assets/projects/fornax/thumb.jpg
-    image_alt: Simulated cold-gas tidal tails coloured by line-of-sight velocity
-    links:
-      - label: Read the write-up
-        url: /projects/fornax.html
-
-  - id: asteroseismology
-    title: Asteroseismology simulator
-    category: fun
-    years: 2026
-    summary: >-
-      An interactive 3D model of stellar oscillations. Choose a star by
-      spectral type or by T<sub>eff</sub> and log g, then explore how
-      pulsation modes of different degree (l) and order (m) ripple across its
-      surface.
-    tags: [JavaScript, three.js, Stellar physics]
-    image: /assets/images/projects/asteroseismology.jpg
-    image_alt: A star and a spherical-harmonic oscillation pattern rendered in the simulator
-    links:
-      - label: Launch simulator
-        url: /asteroseismology/
-
-  - id: youtube-sims
-    title: Simulations for YouTube
-    category: fun
-    summary: >-
-      Smaller simulations I've made to explain things on
-      [my YouTube channel](https://www.youtube.com/@enzoperesafonso): what the
-      transit of a habitable moon around a gas giant might look like (using
-      Pandora from *Avatar* as the test case), and the gravitational waves from
-      the GW170817 neutron-star merger, comparing LIGO/Virgo data with a
-      theoretical waveform.
-    tags: [Python, Simulation, Science communication]
-    video: DhQAOK76zJE
-    links:
-      - label: Exomoon transit
-        url: https://www.youtube.com/watch?v=DhQAOK76zJE
-      - label: GW170817
-        url: https://www.youtube.com/watch?v=ErgA0oa8CDE
-      - label: All videos
-        url: https://www.youtube.com/@enzoperesafonso
 
   - id: astrotouch
     title: AstroTouch
