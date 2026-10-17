@@ -4,14 +4,9 @@ title: Tactile models
 nav: models
 description: Tactile 3D-printable astronomy models made from real telescope data with AstroTouch, designed for blind and visually impaired audiences.
 image: /assets/images/models/jupiter_MIRI.jpg
-model_viewer: true
 ---
 
-<h1>Tactile models</h1>
-
-<p>These models turn astronomical data into something you can hold. They are free to download and print, and most were made with <a href="{{ '/projects/astrotouch.html' | relative_url }}">AstroTouch</a>, my open-source tool for converting FITS images into tactile surfaces. There's also a <a href="https://astrotouch.streamlit.app" target="_blank" rel="noopener">web version</a> you can try without installing anything.</p>
-
-<h2>Models</h2>
+<h1>Models</h1>
 {%- for m in site.data.models %}
 <div class="entry">
   <span class="entry-thumb"><img src="{{ m.image | relative_url }}" alt="{{ m.image_alt | escape }}" loading="lazy" decoding="async"></span>

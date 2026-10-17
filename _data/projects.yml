@@ -23,8 +23,8 @@ categories:
     title: Telescopes & instrumentation
     description: Control software, drivers and hardware for robotic telescopes.
   - id: automation
-    title: Automation, ML & tools
-    description: Pipelines and tools that take manual work out of observing.
+    title: Software & tools
+    description: Packages, pipelines and scripts, from planning observations to automating a telescope's night.
   - id: fun
     title: Fun projects
     description: Hardware and software built for the joy of it, mostly to understand something better.
@@ -64,12 +64,12 @@ items:
     org: ROTSE-IIIc, Namibia · SAAO
     page: /projects/weather-station.html
     summary: >-
-      A low-cost, open environmental monitoring suite for robotic telescopes: a
-      3D-printed weather station with an anemometer and radiation screens, a
-      custom all-sky camera that watches for cloud, and firmware that serves
-      the telemetry a telescope needs to decide whether it can open. Built for
-      the ROTSE-IIIc revival, now growing into AtmoPi, a custom Raspberry Pi
-      board for the next version.
+      An ongoing side project: a low-cost, open weather station and all-sky
+      camera for robotic telescopes. It started as a 3D-printed station with
+      an anemometer and radiation screens for the ROTSE-IIIc revival, and I
+      keep trying new methods and designs, most recently AtmoPi, a custom
+      Raspberry Pi board. The aim is to keep it cheap enough for any small
+      observatory to build, and to share what I learn along the way.
     tags: [Fusion 360, 3D printing, MicroPython, Raspberry Pi, KiCad, Telemetry]
     image: /assets/projects/weather-station/thumb.png
     image_alt: Render of the 3D-printed weather station with its three-cup anemometer
@@ -103,20 +103,22 @@ items:
     years: 2024 – present
     org: SAAO Intelligent Observatory
     featured: true
-    short: automating the nightly start-up of the Lesedi telescope, from reading the sky to calibrations
+    short: working on automating the nightly start-up of the Lesedi telescope
     summary: >-
-      Every night on the 1-metre Lesedi telescope starts with the same
-      routine: work out what the sky is doing, then take flat fields and
-      spectrophotometric standards. I automated it. A computer-vision pipeline
-      detects cloud in all-sky camera images in real time, so the observatory
-      software knows the sky conditions without someone looking up, and the
-      calibrations are scheduled automatically instead of by hand.
+      Each night on the 1-metre Lesedi telescope begins with the same
+      routine: checking what the sky is doing, then taking flat fields and
+      spectrophotometric standards. I've been working on automating it. A
+      computer-vision pipeline looks for cloud in all-sky camera images in real
+      time, which gives the observatory software a picture of the sky
+      conditions. I also wrote scripts that work out which spectrophotometric
+      standards are best to observe at each point in the night and schedule
+      them, so the calibrations no longer have to be planned by hand.
     tags: [Python, Computer vision, Deep learning, Scheduling, Calibration]
 
   - id: saltshaker
     title: SALTshaker
     category: automation
-    years: 2025 – present
+    years: 2023 – present
     summary: >-
       A Python package for planning astronomical observations with the
       Southern African Large Telescope (SALT).

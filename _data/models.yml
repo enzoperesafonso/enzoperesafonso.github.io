@@ -24,9 +24,6 @@
     A scale model of the Southern African Large Telescope, including the
     segmented primary mirror and tracker assembly.
   details: [Multi-part assembly, ~12 h print]
-  model: /assets/models/salt.glb
-  model_alt: 3D model of the Southern African Large Telescope building and its tower, designed in Fusion 360
-  model_orbit: 200deg 75deg auto   # starting camera angle: around, down from the top, distance
   link:
     label: Download files
     url: https://www.thingiverse.com/thing:7011667
