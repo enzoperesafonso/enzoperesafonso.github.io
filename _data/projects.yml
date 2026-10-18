@@ -129,6 +129,24 @@ items:
       - label: Docs
         url: https://saltishaker.readthedocs.io/
 
+  - id: fits-viewer
+    title: FITS Viewer for PyCharm
+    category: automation
+    years: 2026
+    summary: >-
+      A plugin for PyCharm and other JetBrains IDEs that opens FITS files as
+      images instead of unreadable binary, so I can check data without leaving
+      the editor. It handles multi-extension files, compressed images and data
+      cubes, with ZScale stretching, an RA/Dec readout, a header browser and
+      image statistics, and it only loads the plane on screen so large files
+      stay fast.
+    tags: [Kotlin, IntelliJ Platform, FITS, Astronomy software]
+    links:
+      - label: JetBrains Marketplace
+        url: https://plugins.jetbrains.com/search?search=FITS%20Viewer
+      - label: Source
+        url: https://github.com/enzoperesafonso/charm-fits-viewer
+
   - id: astropanel
     title: "AstroPanel: live astronomy on an LED panel"
     category: fun
