@@ -20,7 +20,7 @@ description: Publications, proceedings, software and talks by Enzo Peres Afonso.
 {%- endif %}
 
 {%- if pubs.software and pubs.software.size > 0 %}
-<h2>Software &amp; documentation</h2>
+<h2>Software</h2>
 <ol class="refs">
   {%- for p in pubs.software %}
   <li>{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' | strip }} ({{ p.year }}). {{ p.title | strip }}. <em>{{ p.venue }}</em>.{% if p.links and p.links.size > 0 %} {% include links.html links=p.links %}{% endif %}</li>

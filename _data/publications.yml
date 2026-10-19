@@ -2,7 +2,7 @@
 # Any section with no entries is hidden.
 
 papers:
-  - authors: "Buckley, D. A. H., **Afonso, E. P.**, van Heerden, H. J., Erasmus, N., Husser, T.-O., Foster, C. & Koorts, W."
+  - authors: "Buckley, D. A. H., **Peres Afonso, E.**, van Heerden, H. J., Erasmus, N., Husser, T.-O., Foster, C. & Koorts, W."
     title: >-
       Refurbishing the ROTSE-III Facility in Namibia: A First Step for the
       African Integrated Observation System
@@ -13,24 +13,17 @@ papers:
       # - label: arXiv
       #   url: https://arxiv.org/abs/...
 
+# Only software with a citable record (DOI, ASCL, JOSS). Everything else lives on the Projects page.
 software:
-  - authors: "**Afonso, E. P.**"
+  - authors: "**Peres Afonso, E.**"
     title: >-
-      AstroTouch: Tactile 3D Modeling of Astronomical FITS Data for Visual
-      Impairment Inclusivity
-    venue: Open-source software & documentation
-    year: 2025
+      SALTshaker: A Community Python Package Visibility and Observation
+      Planning for the Southern African Large Telescope
+    venue: Zenodo, version 0.2.1
+    year: 2026
     links:
-      - label: GitHub
-        url: https://github.com/enzoperesafonso/AstroTouch
-      - label: Web app
-        url: https://astrotouch.streamlit.app
-
-  - authors: "**Afonso, E. P.**"
-    title: "SALTshaker: observation planning for the Southern African Large Telescope"
-    venue: Python package
-    year: 2025
-    links:
+      - label: DOI
+        url: https://doi.org/10.5281/zenodo.19878634
       - label: GitHub
         url: https://github.com/enzoperesafonso/SALTshaker
       - label: Docs
