@@ -46,13 +46,10 @@ items:
       replace the defunct legacy C software, with asynchronous interfaces
       that let the original hardware and modern components work together.
     tags: [Python, pyobs, asyncio, Robotic telescopes]
-    page: /projects/rotse.html
     image: /assets/images/projects/rotse-logo.png
     image_alt: ROTSE Namibia logo
     image_logo: true
     links:
-      - label: Read more
-        url: /projects/rotse.html
       - label: pyobs
         url: https://www.pyobs.org
 
@@ -62,7 +59,6 @@ items:
     category: instrumentation
     years: 2024 – present
     org: ROTSE-IIIc, Namibia · SAAO
-    page: /projects/weather-station.html
     summary: >-
       An ongoing side project: a low-cost, open weather station and all-sky
       camera for robotic telescopes. It started as a 3D-printed station with
@@ -74,16 +70,12 @@ items:
     image: /assets/projects/weather-station/thumb.png
     image_alt: Render of the 3D-printed weather station with its three-cup anemometer
     image_logo: true
-    links:
-      - label: Read more
-        url: /projects/weather-station.html
 
   - id: dome-meteo
     title: Dome weather sensor network
     category: instrumentation
     years: 2026
     org: SAAO Intelligent Observatory
-    page: /projects/dome-meteorology.html
     summary: >-
       Power-over-Ethernet sensor nodes that measure temperature, humidity and
       pressure inside SAAO's telescope domes. I wrote the ESP32 firmware, which
@@ -93,9 +85,6 @@ items:
     image: /assets/projects/dome-meteo/thumb.png
     image_alt: Render of the sensor node's printed housing, with the SAAO IO logo on its vented lid and the sensor pod beside it
     image_logo: true
-    links:
-      - label: Read more and explore the 3D model
-        url: /projects/dome-meteorology.html
 
   - id: lesedi-preflight
     title: Automating Lesedi's nightly pre-flight
@@ -194,7 +183,6 @@ items:
     years: 2026
     featured: true
     short: "a free star map maker: posters, planispheres and sky charts as print-ready PDFs"
-    page: /projects/overhead.html
     summary: >-
       A free, open-source star map maker. Give it a date, time and place and it
       draws the sky that was overhead, then exports a print-ready vector PDF:
@@ -212,8 +200,6 @@ items:
         url: https://enzoperesafonso.github.io/overhead/
       - label: GitHub
         url: https://github.com/enzoperesafonso/overhead
-      - label: Read more
-        url: /projects/overhead.html
 
   - id: astrotouch
     title: AstroTouch
@@ -227,12 +213,9 @@ items:
       explore real telescope data. Also available as a web app, no install
       needed.
     tags: [Python, FITS, 3D printing, Accessibility]
-    page: /projects/astrotouch.html
     image: /assets/images/models/jupiter_MIRI.jpg
     image_alt: A 3D-printed tactile relief of Jupiter made from JWST data
     links:
-      - label: Read more
-        url: /projects/astrotouch.html
       - label: GitHub
         url: https://github.com/enzoperesafonso/AstroTouch
       - label: Web app
