@@ -28,6 +28,16 @@
     label: Download files
     url: https://www.thingiverse.com/thing:7011667
 
+- title: PLATO scale model
+  badge: Spacecraft
+  image: /assets/images/models/plato.jpg
+  image_alt: Render of a 1:40 model of ESA's PLATO spacecraft on a display stand, showing its sunshield and grid of 26 cameras
+  summary: >-
+    A 1:40 scale model of ESA's PLATO exoplanet mission, with the service
+    module, sunshield, antenna and all 26 cameras mounted at their correct
+    tilts on the optical bench, plus a display stand.
+  details: [Multi-part assembly, "1:40 scale"]
+
 - title: MeerKAT Galactic Centre
   badge: Radio
   image: /assets/images/models/meerkat.png

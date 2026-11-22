@@ -10,3 +10,6 @@ _site/
 
 # Local Claude Code preview config
 .claude/
+
+# Private editing guide (local only)
+EDITING.md
