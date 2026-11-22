@@ -8,25 +8,13 @@ image: /assets/images/models/jupiter_MIRI.jpg
 
 <h1>Models</h1>
 {%- for m in site.data.models %}
-<div class="entry">
-  <span class="entry-thumb"><img src="{{ m.image | relative_url }}" alt="{{ m.image_alt | escape }}" loading="lazy" decoding="async"></span>
-  <p class="entry-title"><strong>{{ m.title }}</strong>{% if m.badge %} <span class="muted">({{ m.badge }})</span>{% endif %}</p>
-  {{ m.summary | markdownify }}
-  <p class="entry-meta">
-    {%- if m.details %}<span class="muted">{{ m.details | join: " · " }}</span><br>{% endif %}
-    {%- if m.link %}<a href="{{ m.link.url }}" target="_blank" rel="noopener">{{ m.link.label }}</a>{% endif %}
-  </p>
-  {%- if m.model %}
-  <details class="viewer">
-    <summary>View in 3D</summary>
-    <model-viewer src="{{ m.model | relative_url }}" alt="{{ m.model_alt | default: m.title | escape }}"
-                  loading="lazy" camera-controls auto-rotate ar touch-action="pan-y"
-                  {% if m.model_orbit %}camera-orbit="{{ m.model_orbit }}"{% endif %}
-                  environment-image="neutral" tone-mapping="agx" exposure="0.65" shadow-intensity="0.8"></model-viewer>
-    <p class="viewer-hint">Drag to rotate, scroll or pinch to zoom.</p>
-  </details>
-  {%- endif %}
-</div>
+{% include model-entry.html m=m %}
+{%- endfor %}
+
+<h2>BVI Outreach</h2>
+<p>Tactile sets made with AstroTouch for blind and visually impaired audiences, each with braille and text labels.</p>
+{%- for m in site.data.bvi_models %}
+{% include model-entry.html m=m %}
 {%- endfor %}
 
 {%- if site.author.thingiverse and site.author.thingiverse != "" %}

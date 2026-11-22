@@ -13,7 +13,7 @@ You shouldn't need to touch the HTML for most updates. Everything lives in a few
 | Projects (and which ones show on the homepage) | `_data/projects.yml` |
 | News | `_data/news.yml` |
 | Papers, software, talks | `_data/publications.yml` |
-| Tactile 3D models | `_data/models.yml` |
+| Tactile 3D models | `_data/models.yml`, BVI Outreach section in `_data/bvi_models.yml` |
 | Sidebar links | `_data/navigation.yml` |
 
 Each file has comments explaining its fields. Other things to know:

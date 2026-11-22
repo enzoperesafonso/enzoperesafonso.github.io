@@ -7,6 +7,7 @@
 #    news.yml          the News list on the homepage
 #    publications.yml  papers, software and talks
 #    models.yml        the tactile 3D models
+#    bvi_models.yml    the BVI Outreach models (models page)
 #
 #  Photos dropped into assets/images/outreach/ appear in the outreach gallery
 #  automatically.
