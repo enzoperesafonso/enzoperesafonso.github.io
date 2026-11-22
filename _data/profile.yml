@@ -5,36 +5,27 @@ greeting: Hello!
 # First paragraph on the homepage. It is followed by your featured projects
 # (featured: true in projects.yml) as a short bullet list.
 intro: |
-  I'm an astrophysics Honours student at the University of Cape Town, and what
-  excites me most is the whole chain from sky to science: the telescopes and
-  electronics that catch the light, the software that points them, and what
-  the data turns out to say. I learn by building things and finding out where
-  they break. Since 2024 I've been part of the team reviving ROTSE-IIIc, a
-  robotic telescope in Namibia that sat dormant for nearly a decade. I designed
-  its new control system and wrote its mount driver, and since 2025 it has been
-  observing again, operated remotely from Cape Town. I also contribute to the
-  open-source [pyobs](https://www.pyobs.org) observatory control system and
-  build tools for SAAO's Intelligent Observatory. Some of what I've worked on:
+  What excites me most is the whole chain from sky to science: the
+  telescopes that catch the light, the software that points them, and what the
+  data turns out to say. Since 2024 I've helped revive ROTSE-IIIc, a robotic
+  telescope in Namibia that sat dormant for nearly a decade; I designed its new
+  control system, and it has been observing again since 2025. I also contribute
+  to [pyobs](https://www.pyobs.org) and build tools for SAAO's Intelligent
+  Observatory. Some of what I've worked on:
 
 # Shown after the project list.
 outro: |
-  There's always a side project on the go, because the best way I know to
-  understand something is to build it: a galaxy-merger simulation I wrote from
-  scratch in C, a [star map maker](https://enzoperesafonso.github.io/overhead/) anyone can use for
-  free, a simulator for the way stars ring like bells. The other half of it is
-  sharing the sky: I co-founded Zulelinye Outreach, and I make
-  [tactile models](/models.html) so that blind and visually impaired people can
-  explore real telescope data by touch.
-
-  What I want to keep working on is time-domain astronomy: robotic telescopes
-  and the software that runs them, transients such as X-ray binaries and
-  cataclysmic variables, and machine learning for astronomical data.
+  I also build side projects, like a [star map maker](https://enzoperesafonso.github.io/overhead/),
+  and make [tactile models](/models.html) so blind and visually impaired people
+  can explore real telescope data by touch. Next, I want to work on
+  time-domain astronomy: robotic telescopes, transients, and machine learning
+  for astronomical data.
 
 # Your current degree. This sentence stays hidden until `institution` is
 # filled in, then reads: "I'm currently doing a <degree> at <institution>,
 # supervised by <supervisors>. <thesis>"
 current:
-  degree: "a BSc (Hons) in Astrophysics & Space Science"          # e.g. an MSc in Astrophysics & Space Science
+  degree: "an MSc in Astronomy"          # e.g. an MSc in Astrophysics & Space Science
   institution: "the University of Cape Town"     # e.g. the University of Cape Town
-  supervisors: "Dr R. Kuhn"     # e.g. Dr A. Surname and Prof. B. Surname
-  thesis: "My project is to clean up KELT-South light curves and tune transit searches so we can find exoplanets hiding in them."          # e.g. My thesis is about ...
+  supervisors: ""     # e.g. Dr A. Surname and Prof. B. Surname
+  thesis: ""          # e.g. My thesis is about ...

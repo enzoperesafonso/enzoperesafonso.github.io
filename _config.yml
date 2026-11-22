@@ -14,9 +14,9 @@
 
 title: Enzo Peres Afonso
 description: >-
-  Astrophysics Honours student at the University of Cape Town, building
-  robotic telescope software and instruments, and hunting for exoplanets in
-  survey data.
+  Astronomy MSc student at the University of Cape Town, building robotic
+  telescope software and instruments, and tactile models of real telescope
+  data.
 url: https://enzoperesafonso.github.io
 baseurl: ""
 lang: en
@@ -24,7 +24,7 @@ lang: en
 author:
   name: Enzo Peres Afonso
   # Shown under your name in the sidebar.
-  position: Honours student in Astrophysics & Space Science
+  position: MSc student in Astronomy
   affiliation: "University of Cape Town · SAAO"  # shown under your position; blank to hide
   email: enzo.p.afonso@gmail.com
   cv: ""          # path to your CV PDF; blank hides the CV link in the sidebar (file is /assets/pdfs/CV.pdf)
