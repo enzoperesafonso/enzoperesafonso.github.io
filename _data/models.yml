@@ -4,18 +4,6 @@
 # `model_alt:` describing it). A "View in 3D" button appears under the entry.
 # `model_orbit:` optionally sets the starting camera angle.
 
-- title: JWST Jupiter (MIRI)
-  badge: Tactile data
-  image: /assets/images/models/jupiter_MIRI.jpg
-  image_alt: Tactile relief of Jupiter's cloud bands printed in white
-  summary: >-
-    A high-resolution tactile relief of Jupiter's cloud bands and Great Red
-    Spot, made directly from James Webb Space Telescope MIRI data.
-  details: [FITS to 3D, ~4 h print]
-  link:
-    label: Download files
-    url: https://www.thingiverse.com/thing:7201284
-
 - title: SALT scale model
   badge: Instrumentation
   image: /assets/images/models/salt_print.JPG

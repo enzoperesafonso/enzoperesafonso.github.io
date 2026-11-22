@@ -4,7 +4,7 @@
 
 - title: Galaxy morphology
   badge: Tactile set
-  image: /assets/images/models/galaxy_morphology.jpg
+  image: /assets/images/models/bvi_galaxy_morphology.jpg
   image_alt: Rendered pair of tactile plaques for an Sc spiral galaxy, an idealised spiral beside the real galaxy M74, each with a braille label
   summary: >-
     Plaques for the eight Hubble galaxy classes, from round ellipticals to
@@ -16,7 +16,7 @@
 
 - title: Centaurus A in four kinds of light
   badge: Multiwavelength
-  image: /assets/images/models/centaurus_a.jpg
+  image: /assets/images/models/bvi_centaurus_a.jpg
   image_alt: Rendered set of four tactile plaques of Centaurus A in radio, infrared, visible and ultraviolet light
   summary: >-
     The same patch of sky around the active galaxy Centaurus A in radio,
@@ -25,9 +25,20 @@
     warped dust disc and the young stars forming inside it.
   details: [4 plaques, "SUMSS, WISE, DSS2, GALEX"]
 
+- title: Jupiter (JWST)
+  badge: JWST
+  image: /assets/images/models/bvi_jupiter_jwst.jpg
+  image_alt: Rendered tactile plaque of Jupiter, with horizontal ridges for its cloud bands, a ring for the Great Red Spot and a braille label
+  summary: >-
+    Jupiter from the James Webb Space Telescope image, rebuilt with the
+    latest AstroTouch: the cloud belts and zones become ridges and grooves
+    across the disc, the Great Red Spot a ring you can trace, and smaller
+    storms bumps and ovals.
+  details: [JWST data, Braille and text labels]
+
 - title: Wolf-Rayet 140
   badge: JWST
-  image: /assets/images/models/wr140.jpg
+  image: /assets/images/models/bvi_wr140.jpg
   image_alt: Rendered tactile plaque of WR 140, with a fan of parallel curved ridges spreading out from the stars
   summary: >-
     JWST's mid-infrared image of a pair of massive stars whose colliding
@@ -37,7 +48,7 @@
 
 - title: "GW150914: feel a gravitational wave"
   badge: Gravitational waves
-  image: /assets/images/models/gw150914.jpg
+  image: /assets/images/models/bvi_gw150914.jpg
   image_alt: Rendered tactile plaque of the GW150914 signal, with a ridged strip above a raised wave that grows faster and taller before ringing down
   summary: >-
     The first gravitational wave ever detected, from two merging black
@@ -48,7 +59,7 @@
 
 - title: Planet globes
   badge: Planetary
-  image: /assets/images/models/planet_globes.jpg
+  image: /assets/images/models/bvi_planet_globes.jpg
   image_alt: Rendered tactile globes of Mars, Jupiter and Earth, showing Mars's volcanoes and canyon, Jupiter's cloud bands and Earth's continents
   summary: >-
     Hand-held globes of Mars, Jupiter, Earth, the Moon and Saturn made from
