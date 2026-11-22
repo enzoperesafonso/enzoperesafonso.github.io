@@ -5,7 +5,7 @@
 - title: Galaxy morphology
   badge: Tactile set
   image: /assets/images/models/galaxy_morphology.jpg
-  image_alt: Rendered tactile plaque of a spiral galaxy, with raised spiral arms, bumps for star-forming regions and a braille label
+  image_alt: Rendered pair of tactile plaques for an Sc spiral galaxy, an idealised spiral beside the real galaxy M74, each with a braille label
   summary: >-
     Plaques for the eight Hubble galaxy classes, from round ellipticals to
     barred spirals and irregulars. Each class comes as an idealised plaque,
@@ -17,7 +17,7 @@
 - title: Centaurus A in four kinds of light
   badge: Multiwavelength
   image: /assets/images/models/centaurus_a.jpg
-  image_alt: Rendered tactile plaque of Centaurus A in radio light, showing two smooth raised lobes joined through the centre
+  image_alt: Rendered set of four tactile plaques of Centaurus A in radio, infrared, visible and ultraviolet light
   summary: >-
     The same patch of sky around the active galaxy Centaurus A in radio,
     infrared, visible and ultraviolet light, at the same scale and position,
@@ -38,7 +38,7 @@
 - title: "GW150914: feel a gravitational wave"
   badge: Gravitational waves
   image: /assets/images/models/gw150914.jpg
-  image_alt: Rendered tactile plaque of the GW150914 signal, a raised wave that grows faster and taller before ringing down, above a ridged strip of the same wave
+  image_alt: Rendered tactile plaque of the GW150914 signal, with a ridged strip above a raised wave that grows faster and taller before ringing down
   summary: >-
     The first gravitational wave ever detected, from two merging black
     holes. Running a finger left to right plays back the last tenth of a
@@ -49,7 +49,7 @@
 - title: Planet globes
   badge: Planetary
   image: /assets/images/models/planet_globes.jpg
-  image_alt: Rendered tactile globe of Mars showing Olympus Mons, the Tharsis volcanoes and the Valles Marineris canyon
+  image_alt: Rendered tactile globes of Mars, Jupiter and Earth, showing Mars's volcanoes and canyon, Jupiter's cloud bands and Earth's continents
   summary: >-
     Hand-held globes of Mars, Jupiter, Earth, the Moon and Saturn made from
     real global maps: Olympus Mons and Valles Marineris on Mars, the Great
