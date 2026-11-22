@@ -11,7 +11,6 @@ You shouldn't need to touch the HTML for most updates. Everything lives in a few
 | Name, position, email, profile links, CV path | `_config.yml` |
 | Homepage intro, research interests, current degree | `_data/profile.yml` |
 | Projects (and which ones show on the homepage) | `_data/projects.yml` |
-| News | `_data/news.yml` |
 | Papers, software, talks | `_data/publications.yml` |
 | Tactile 3D models | `_data/models.yml`, BVI Outreach section in `_data/bvi_models.yml` |
 | Sidebar links | `_data/navigation.yml` |

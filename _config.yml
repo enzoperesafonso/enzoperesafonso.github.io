@@ -4,7 +4,6 @@
 #  Most of the content lives in _data/:
 #    profile.yml       intro, research interests, education, current degree
 #    projects.yml      everything on the Projects page (+ homepage highlights)
-#    news.yml          the News list on the homepage
 #    publications.yml  papers, software and talks
 #    models.yml        the tactile 3D models
 #    bvi_models.yml    the BVI Outreach models (models page)

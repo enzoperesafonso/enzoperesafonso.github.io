@@ -26,9 +26,3 @@ nav: home
   {{ profile.outro | markdownify }}
 </div>
 
-<h2>News</h2>
-<ul class="news">
-  {%- for n in site.data.news %}
-  <li><span class="news-date">{{ n.date }}</span>{{ n.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
-  {%- endfor %}
-</ul>
