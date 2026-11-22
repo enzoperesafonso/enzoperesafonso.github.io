@@ -86,24 +86,6 @@ items:
     image_alt: Render of the sensor node's printed housing, with the SAAO IO logo on its vented lid and the sensor pod beside it
     image_logo: true
 
-  - id: lesedi-preflight
-    title: Automating Lesedi's nightly pre-flight
-    category: automation
-    years: 2024 – present
-    org: SAAO Intelligent Observatory
-    featured: true
-    short: working on automating the nightly start-up of the Lesedi telescope
-    summary: >-
-      Each night on the 1-metre Lesedi telescope begins with the same
-      routine: checking what the sky is doing, then taking flat fields and
-      spectrophotometric standards. I've been working on automating it. A
-      computer-vision pipeline looks for cloud in all-sky camera images in real
-      time, which gives the observatory software a picture of the sky
-      conditions. I also wrote scripts that work out which spectrophotometric
-      standards are best to observe at each point in the night and schedule
-      them, so the calibrations no longer have to be planned by hand.
-    tags: [Python, Computer vision, Deep learning, Scheduling, Calibration]
-
   - id: saltshaker
     title: SALTshaker
     category: automation
