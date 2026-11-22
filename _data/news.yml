@@ -2,6 +2,11 @@
 # `date` is plain text, so "Mar 2026" or "2026" both work.
 # `text` accepts Markdown links.
 
+- date: Nov 2026
+  text: >-
+    Built a 1:40 3D-printed model of the PLATO space telescope, with all 26
+    cameras printed separately. Files coming soon on [Models](/models.html).
+
 - date: Oct 2026
   text: >-
     Released [Overhead](https://enzoperesafonso.github.io/overhead/), a free, open-source star map
