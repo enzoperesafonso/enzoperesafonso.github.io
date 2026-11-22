@@ -25,7 +25,7 @@ author:
   name: Enzo Peres Afonso
   # Shown under your name in the sidebar.
   position: MSc student in Astronomy
-  affiliation: "University of Cape Town · SAAO"  # shown under your position; blank to hide
+  affiliation: "University of Cape Town · South African Astronomical Observatory"  # shown under your position; blank to hide
   email: enzo.p.afonso@gmail.com
   cv: ""          # path to your CV PDF; blank hides the CV link in the sidebar (file is /assets/pdfs/CV.pdf)
   photo: /assets/images/ui/me.jpg
